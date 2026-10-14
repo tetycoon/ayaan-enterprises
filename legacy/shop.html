@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="images/logo-mark.png">
+  <title>Buy Office Chairs - Ergonomic, Executive, Mesh & Visitor Chairs | Ayaan Enterprises</title>
+  <meta name="description" content="Buy new office chairs: ergonomic, executive, mesh, visitor, waiting-area and auditorium seating. Bulk prices, GST invoice, delivery and installation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="shop">
+  <header id="site-header"></header>
+  <main>
+    <section class="page-hero">
+      <div class="container page-hero-grid">
+        <div>
+          <div class="breadcrumb"><a href="index.html">Home</a> / Buy Chairs</div>
+          <span class="eyebrow">Chair shop</span>
+          <h1>New office chairs, delivered and installed</h1>
+          <p class="lead">Ergonomic, executive, mesh, visitor and auditorium seating for offices of every size. Pick your chairs and quantities, and we'll send you the best price with a GST invoice.</p>
+          <div class="btn-row">
+            <a class="btn btn-amber" href="#catalogue">Browse chairs</a>
+            <a class="btn btn-ghost" data-wa="Hi, I want to buy office chairs. Please share your catalogue and prices." href="#">WhatsApp us</a>
+          </div>
+          <ul class="shop-perks">
+            <li>Bulk pricing</li><li>Free installation</li><li>Warranty</li><li>GST invoice</li>
+          </ul>
+        </div>
+        <div class="shop-collage" aria-hidden="true">
+          <figure class="shop-tile t1"><img src="images/hero-ergonomic.jpg" alt=""></figure>
+          <figure class="shop-tile t2 white"><img src="images/hero-executive.jpg" alt=""></figure>
+          <figure class="shop-tile t3"><img src="images/hero-mesh.jpg" alt=""></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalogue">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Catalogue</span>
+          <h2>Choose your chairs</h2>
+          <p>Set the quantity and add chairs to your enquiry. We reply with prices, delivery dates and bulk discounts.</p>
+        </div>
+        <div class="shop-filters" id="shop-filters" role="group" aria-label="Filter by category"></div>
+        <div class="shop-grid" id="shop-grid"></div>
+      </div>
+    </section>
+
+    <section class="section bg-soft">
+      <div class="container">
+        <div class="grid g-4">
+          <div class="card reveal"><div class="card-icon">🚚</div><h3>Delivery &amp; installation</h3><p>Chairs delivered to your office and assembled by our team.</p></div>
+          <div class="card reveal"><div class="card-icon">🏷</div><h3>Bulk discounts</h3><p>The more chairs you order, the lower the price per chair.</p></div>
+          <div class="card reveal"><div class="card-icon">🛡</div><h3>Warranty &amp; service</h3><p>Every chair is backed by our own repair and service team.</p></div>
+          <div class="card reveal"><div class="card-icon">🧾</div><h3>GST invoice</h3><p>Proper billing for companies, schools and hospitals.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head"><span class="eyebrow">FAQ</span><h2>Buying chairs from us</h2></div>
+        <div class="faq">
+          <details><summary>Can I see a sample chair before ordering in bulk?</summary><p>Yes. For larger orders we can bring a sample to your office so your team can try it before you confirm.</p></details>
+          <details><summary>How long does delivery take?</summary><p>Stock chairs are usually delivered within a few working days. Large or custom orders are scheduled with you when you confirm.</p></details>
+          <details><summary>Do you offer custom colours or fabrics?</summary><p>Many models are available in different fabric and mesh colours. Mention it in your enquiry and we will share the options.</p></details>
+          <details><summary>Can you repair the chairs later too?</summary><p>Yes. Repair and servicing is our main business, so we look after your chairs long after you buy them.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Enquiry list (sticky bar + panel) -->
+  <div class="cart-bar" id="cart-bar" hidden>
+    <div class="container cart-bar-in">
+      <button type="button" class="cart-toggle" id="cart-toggle" aria-expanded="false" aria-controls="cart-panel">
+        <span class="cart-count" id="cart-count">0</span> <span id="cart-label">chairs in your enquiry</span> <span aria-hidden="true">▴</span>
+      </button>
+      <div class="btn-row">
+        <a class="btn btn-wa btn-sm" id="cart-wa" target="_blank" rel="noopener" href="#">Send on WhatsApp</a>
+        <a class="btn btn-amber btn-sm" id="cart-quote" href="quote.html">Request quotation</a>
+      </div>
+    </div>
+    <div class="cart-panel" id="cart-panel" hidden>
+      <div class="container">
+        <ul class="cart-list" id="cart-list"></ul>
+        <button type="button" class="link-clear" id="cart-clear">Clear list</button>
+      </div>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>
