@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/auth";
 import { executeSql, initDb } from "@/lib/db";
 import { getSampleEnterpriseData } from "@/lib/store";
 
 export async function POST() {
+  const denied = await requireAdmin();
+  if (denied) return denied;
   try {
     await initDb(true);
     const sample = getSampleEnterpriseData();
@@ -81,14 +84,7 @@ export async function POST() {
       );
     }
 
-    // 4. Seed password and settings
-    await executeSql(
-      `INSERT INTO settings (key, value) VALUES ('pin', 'Ayaan@2026')
-       ON CONFLICT (key) DO UPDATE SET value = 'Ayaan@2026'`,
-      []
-    );
-
-    // 5. Sync counters to seeded heights
+    // 4. Sync counters to seeded heights
     await executeSql(
       `INSERT INTO counters (prefix, current_val) VALUES ('ENQ', 1005)
        ON CONFLICT (prefix) DO UPDATE SET current_val = GREATEST(counters.current_val, 1005)`,

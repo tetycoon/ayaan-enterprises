@@ -1,8 +1,16 @@
 import { NextResponse } from "next/server";
 import { queryAll, executeSql } from "@/lib/db";
 import { SITE } from "@/lib/config";
+import { requireAdmin } from "@/lib/auth";
+
+// Business profile shown on admin quotations. Admin only. Credentials are never stored or
+// returned here: the admin PIN is handled by /api/admin/* (see src/lib/auth.js).
+const EDITABLE_KEYS = ["businessName", "phone", "address", "gstin", "bank", "gstPct", "quoteTerms"];
 
 export async function GET() {
+  const denied = await requireAdmin();
+  if (denied) return denied;
+
   try {
     const rows = await queryAll("SELECT key, value FROM settings");
     const settings = {
@@ -12,16 +20,12 @@ export async function GET() {
       gstin: "33AABCA1234F1Z9",
       bank: "Bank: HDFC Bank\nA/c No: 50200081223388\nIFSC: HDFC0001234\nBranch: Guindy, Chennai",
       gstPct: 18,
-      quoteTerms: "1. Rates inclusive of genuine spare parts and expert on-site labor.\n2. Work executed in staggered batches without interrupting office operations.\n3. 90-day comprehensive on-site warranty.\n4. 50% advance on PO, 50% upon satisfactory batch completion.",
-      pin: "Ayaan@2026"
+      quoteTerms: "1. Rates inclusive of genuine spare parts and expert on-site labor.\n2. Work executed in staggered batches without interrupting office operations.\n3. 90-day comprehensive on-site warranty.\n4. 50% advance on PO, 50% upon satisfactory batch completion."
     };
 
     rows.forEach((r) => {
-      if (r.key === "gstPct") {
-        settings[r.key] = Number(r.value);
-      } else {
-        settings[r.key] = r.value;
-      }
+      if (!EDITABLE_KEYS.includes(r.key)) return;
+      settings[r.key] = r.key === "gstPct" ? Number(r.value) : r.value;
     });
 
     const pgUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL || "";
@@ -38,9 +42,12 @@ export async function GET() {
 }
 
 export async function POST(req) {
+  const denied = await requireAdmin();
+  if (denied) return denied;
+
   try {
     const body = await req.json();
-    const entries = Object.entries(body);
+    const entries = Object.entries(body).filter(([key]) => EDITABLE_KEYS.includes(key));
 
     for (const [key, val] of entries) {
       const strVal = String(val);

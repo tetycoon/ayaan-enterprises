@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
+import { requireAdmin, isAdmin } from "@/lib/auth";
 import { queryAll, executeSql, getNextSqlId } from "@/lib/db";
 
 export async function GET() {
+  const denied = await requireAdmin();
+  if (denied) return denied;
   try {
     const rows = await queryAll("SELECT * FROM enquiries ORDER BY created_at DESC");
     const parsed = rows.map((r) => ({
@@ -21,6 +24,12 @@ export async function GET() {
 export async function POST(req) {
   try {
     const body = await req.json();
+    // Website forms post here without signing in; only an admin may choose the id, status or notes.
+    if (!(await isAdmin())) {
+      delete body.id;
+      delete body.status;
+      delete body.notes;
+    }
     const id = body.id || (await getNextSqlId("ENQ"));
 
     await executeSql(
@@ -55,6 +64,8 @@ export async function POST(req) {
 }
 
 export async function PATCH(req) {
+  const denied = await requireAdmin();
+  if (denied) return denied;
   try {
     const { id, status, notes } = await req.json();
     if (!id) {
@@ -80,6 +91,8 @@ export async function PATCH(req) {
 }
 
 export async function DELETE(req) {
+  const denied = await requireAdmin();
+  if (denied) return denied;
   try {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");

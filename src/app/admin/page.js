@@ -131,26 +131,45 @@ export default function AdminPage() {
       }
     });
 
-    if (sessionStorage.getItem("cs_admin") === "1") {
-      setIsAuthenticated(true);
-    }
+    sessionStorage.removeItem("cs_admin"); // legacy client-side flag, no longer trusted
+    fetch("/api/admin/session", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((s) => {
+        if (s?.authenticated) setIsAuthenticated(true);
+      })
+      .catch(() => {});
   }, []);
 
-  const expectedPassword = String(data.settings?.pin || "Ayaan@2026");
-
-  const handleLogin = (e) => {
+  // The PIN is checked on the server (/api/admin/login), which sets an HttpOnly session cookie.
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (pinInput.trim() === expectedPassword) {
-      sessionStorage.setItem("cs_admin", "1");
+    setPinError(false);
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pin: pinInput.trim() })
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setPinError(out.error || "Incorrect staff password. Please try again.");
+        return;
+      }
+      setPinInput("");
       setIsAuthenticated(true);
-      setPinError(false);
-    } else {
-      setPinError(true);
+      const synced = await Store.syncWithSql();
+      if (synced) {
+        setData(synced);
+        setSqlConnected(true);
+        if (synced.settings) setCompanySettings((prev) => ({ ...prev, ...synced.settings }));
+      }
+    } catch {
+      setPinError("Could not reach the server. Please try again.");
     }
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem("cs_admin");
+    fetch("/api/admin/logout", { method: "POST" }).catch(() => {});
     setIsAuthenticated(false);
     setPinInput("");
   };
@@ -166,22 +185,14 @@ export default function AdminPage() {
   };
 
   // Handle Password Change in Settings
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = async (e) => {
     e.preventDefault();
     setPasswordFeedback(null);
 
-    if (currPassword !== expectedPassword) {
+    if (!newPassword || newPassword.length < 8) {
       setPasswordFeedback({
         type: "error",
-        message: "Current password is incorrect. Please check and try again."
-      });
-      return;
-    }
-
-    if (!newPassword || newPassword.length < 4) {
-      setPasswordFeedback({
-        type: "error",
-        message: "New password must be at least 4 characters long."
+        message: "New password must be at least 8 characters long."
       });
       return;
     }
@@ -194,26 +205,29 @@ export default function AdminPage() {
       return;
     }
 
-    // Save new password locally
-    updateStore((d) => {
-      d.settings = d.settings || {};
-      d.settings.pin = newPassword;
-      return d;
-    });
-
-    // Save new password to SQL database
-    fetch("/api/settings", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pin: newPassword })
-    }).catch((err) => console.warn("SQL password update error:", err));
+    let res;
+    try {
+      res = await fetch("/api/admin/password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ currentPin: currPassword, newPin: newPassword })
+      });
+    } catch {
+      setPasswordFeedback({ type: "error", message: "Could not reach the server. Please try again." });
+      return;
+    }
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      setPasswordFeedback({ type: "error", message: out.error || "Password could not be changed." });
+      return;
+    }
 
     setCurrPassword("");
     setNewPassword("");
     setConfirmPassword("");
     setPasswordFeedback({
       type: "success",
-      message: `Password updated successfully in SQL database! Next time log in using: "${newPassword}".`
+      message: "Password updated. Use the new password next time you log in."
     });
   };
 
@@ -451,7 +465,7 @@ export default function AdminPage() {
 
             {pinError && (
               <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-xs font-bold text-red-700 flex items-center gap-2">
-                <span>✕</span> Incorrect staff password. Please try again or check settings.
+                <span>✕</span> {typeof pinError === "string" ? pinError : "Incorrect staff password. Please try again."}
               </div>
             )}
 
@@ -464,19 +478,7 @@ export default function AdminPage() {
 
             {/* Quick helper info */}
             <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs text-slate-600">
-              <div className="flex items-center justify-between">
-                <span>
-                  Default Password: <strong className="text-slate-900 font-mono">Ayaan@2026</strong>
-                </span>
-                <button
-                  type="button"
-                  className="text-teal-700 hover:text-teal-900 font-bold underline text-xs"
-                  onClick={() => setPinInput("Ayaan@2026")}
-                >
-                  Fill Default
-                </button>
-              </div>
-              <p className="text-[11px] text-slate-400 mt-1">
+              <p className="text-[11px] text-slate-400">
                 You can change this password anytime in the <strong>Settings</strong> tab.
               </p>
             </div>
@@ -1299,7 +1301,7 @@ export default function AdminPage() {
                       <input
                         type={showNewPass ? "text" : "password"}
                         className="w-full p-2.5 pr-16 border border-slate-300 rounded-lg font-medium focus:ring-1 focus:ring-amber-500"
-                        placeholder="At least 4 characters"
+                        placeholder="At least 8 characters"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
                         required

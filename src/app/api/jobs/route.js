@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/auth";
 import { queryAll, executeSql, getNextSqlId } from "@/lib/db";
 
 export async function GET() {
+  const denied = await requireAdmin();
+  if (denied) return denied;
   try {
     const rows = await queryAll("SELECT * FROM jobs ORDER BY id DESC");
     const parsed = rows.map((r) => ({
@@ -23,6 +26,8 @@ export async function GET() {
 }
 
 export async function POST(req) {
+  const denied = await requireAdmin();
+  if (denied) return denied;
   try {
     const body = await req.json();
     const id = body.id || (await getNextSqlId("JOB"));
@@ -51,6 +56,8 @@ export async function POST(req) {
 }
 
 export async function PATCH(req) {
+  const denied = await requireAdmin();
+  if (denied) return denied;
   try {
     const { id, status, progress } = await req.json();
     if (!id) {
@@ -73,6 +80,8 @@ export async function PATCH(req) {
 }
 
 export async function DELETE(req) {
+  const denied = await requireAdmin();
+  if (denied) return denied;
   try {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");

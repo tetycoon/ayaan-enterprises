@@ -17,8 +17,7 @@ export function blankData() {
       gstin: "",
       bank: "Bank: \nA/c No: \nIFSC: ",
       gstPct: 18,
-      quoteTerms: "1. Prices are per chair unless stated.\n2. 50% advance on approval, balance on completion.\n3. Work carried out in batches so your office keeps running.\n4. 90-day warranty on replaced parts.\n5. Quotation valid for 15 days.",
-      pin: "Ayaan@2026"
+      quoteTerms: "1. Prices are per chair unless stated.\n2. 50% advance on approval, balance on completion.\n3. Work carried out in batches so your office keeps running.\n4. 90-day warranty on replaced parts.\n5. Quotation valid for 15 days."
     },
     counters: {}
   };
@@ -159,8 +158,7 @@ export function getSampleEnterpriseData() {
       gstin: "33AABCA1234F1Z9",
       bank: "Bank: HDFC Bank\nA/c No: 50200081223388\nIFSC: HDFC0001234\nBranch: Guindy Industrial Estate, Chennai",
       gstPct: 18,
-      quoteTerms: "1. Rates are inclusive of genuine spare parts and expert on-site labor.\n2. Work executed in staggered batches without interrupting office operations.\n3. 90-day comprehensive on-site warranty on all replaced hydraulic cylinders & mechanisms.\n4. Payment terms: 50% mobilization advance on PO, 50% upon satisfactory batch completion.\n5. Quotation validity: 15 days from issuance.",
-      pin: "Ayaan@2026"
+      quoteTerms: "1. Rates are inclusive of genuine spare parts and expert on-site labor.\n2. Work executed in staggered batches without interrupting office operations.\n3. 90-day comprehensive on-site warranty on all replaced hydraulic cylinders & mechanisms.\n4. Payment terms: 50% mobilization advance on PO, 50% upon satisfactory batch completion.\n5. Quotation validity: 15 days from issuance."
     },
     counters: { ENQ: 1005, QT: 1002, JOB: 1002 }
   };
@@ -185,7 +183,7 @@ export const Store = {
       });
       if (d.settings.businessName === "ChairCare Pro") d.settings.businessName = b.settings.businessName;
       if (d.settings.phone === "+91 98765 43210") d.settings.phone = b.settings.phone;
-      if (d.settings.pin === "1234" || !d.settings.pin) d.settings.pin = "Ayaan@2026";
+      delete d.settings.pin; // older versions cached the admin PIN here; credentials now stay on the server
       delete d.settings.email;
       return d;
     } catch {

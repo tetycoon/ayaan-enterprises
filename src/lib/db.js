@@ -179,13 +179,12 @@ export async function initDb(force = false) {
         }
       }
 
-      // Seed default settings and password in Postgres if not exists
-      const existingPin = await sql.query("SELECT value FROM settings WHERE key = $1", ["pin"]);
-      if (!existingPin || existingPin.length === 0) {
-        await sql.query(
-          "INSERT INTO settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO NOTHING",
-          ["pin", "Ayaan@2026"]
-        );
+      // Remove the legacy plaintext admin PIN (admin auth now lives in src/lib/auth.js)
+      await sql.query("DELETE FROM settings WHERE key = $1", ["pin"]);
+
+      // Seed default business settings in Postgres if not present
+      const existingProfile = await sql.query("SELECT value FROM settings WHERE key = $1", ["businessName"]);
+      if (!existingProfile || existingProfile.length === 0) {
         await sql.query(
           "INSERT INTO settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO NOTHING",
           ["businessName", SITE.name || "Ayaan Enterprises"]
@@ -270,10 +269,12 @@ export async function initDb(force = false) {
       );
     `);
 
-    // Seed default password in SQLite if not present
-    const pinRow = db.prepare("SELECT value FROM settings WHERE key = ?").get("pin");
-    if (!pinRow) {
-      db.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)").run("pin", "Ayaan@2026");
+    // Remove the legacy plaintext admin PIN (admin auth now lives in src/lib/auth.js)
+    db.prepare("DELETE FROM settings WHERE key = ?").run("pin");
+
+    // Seed default business settings in SQLite if not present
+    const profileRow = db.prepare("SELECT value FROM settings WHERE key = ?").get("businessName");
+    if (!profileRow) {
       db.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)").run("businessName", SITE.name || "Ayaan Enterprises");
       db.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)").run("phone", SITE.phone || "+91 81222 33887");
       db.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)").run("address", SITE.address || "2nd Floor, ANANDHAM ELITE, 1, MRTS Road, 1st Street, Velachery, Chennai, Tamil Nadu 600042, India.");
