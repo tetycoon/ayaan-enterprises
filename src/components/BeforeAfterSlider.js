@@ -1,20 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import Photo, { SIZES } from "./Photo";
 
-export default function BeforeAfterSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt, title, subtitle }) {
+export default function BeforeAfterSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt, title, subtitle, sizes = SIZES.grid3 }) {
   const [val, setVal] = useState(50);
 
   return (
     <div className="reveal in">
       <div className="ba" style={{ "--pos": `${val}%` }}>
         <figure className="img-slot">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={beforeSrc} alt={beforeAlt || "Before"} />
+          <Photo src={beforeSrc} alt={beforeAlt || "Before"} sizes={sizes} />
         </figure>
         <figure className="img-slot ba-after" style={{ clipPath: `inset(0 0 0 ${val}%)` }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={afterSrc} alt={afterAlt || "After"} />
+          <Photo src={afterSrc} alt={afterAlt || "After"} sizes={sizes} />
         </figure>
         <span className="ba-label l">Before</span>
         <span className="ba-label r">After</span>

@@ -296,7 +296,8 @@ export default function LogoPreloader() {
 
         {/* Brand Text */}
         <div className="preloader-brand">
-          <h1 className="preloader-brand-title">Ayaan Enterprises</h1>
+          {/* Not a heading: each page has its own single <h1> */}
+          <p className="preloader-brand-title">Ayaan Enterprises</p>
           <p className="preloader-brand-tagline">Corporate Seating Care &middot; Chennai</p>
         </div>
 

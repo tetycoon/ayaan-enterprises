@@ -2,33 +2,38 @@
 
 import Link from "next/link";
 import { clearStoredCart } from "@/lib/cart";
+import Photo, { SIZES } from "./Photo";
 
 const CHAIR_TYPES = [
   {
     name: "Ergonomic High-Back",
     cat: "Workstation",
-    image: "/images/hero-ergonomic.jpg",
+    image: "/images/products/ergonomic-highback-black.jpg",
+    contain: true,
     specs: "Synchro Tilt · Adjustable Lumbar · 3D Arms",
     tag: "High Demand"
   },
   {
     name: "Executive Leatherette",
     cat: "Cabin Seating",
-    image: "/images/hero-executive.jpg",
+    image: "/images/products/executive-leatherette-black.jpg",
+    contain: true,
     specs: "High-Back Cushioning · Polished Chrome Base",
     tag: "Executive"
   },
   {
     name: "Breathable Mesh Task",
     cat: "Office Staff",
-    image: "/images/hero-mesh.jpg",
+    image: "/images/products/mesh-midback-black.png",
+    contain: true,
     specs: "Cool Airflow Mesh · Dual Castor Wheels",
     tag: "Popular"
   },
   {
     name: "Workstation Swivel",
     cat: "Desk Chair",
-    image: "/images/prod-office.jpg",
+    image: "/images/products/workstation-midback-black.png",
+    contain: true,
     specs: "Heavy-Duty Fabric · Class-4 Hydraulic Lift",
     tag: "Standard"
   },
@@ -56,7 +61,8 @@ const CHAIR_TYPES = [
   {
     name: "Pro Ergonomic Desk",
     cat: "Tech & IT Teams",
-    image: "/images/hero-desk.jpg",
+    image: "/images/products/ergonomic-headrest-black.png",
+    contain: true,
     specs: "Neck Rest · Multi-Angle Lock · Foam Seat",
     tag: "Ergonomic"
   },
@@ -89,9 +95,8 @@ export default function ChairGalleryMarquee() {
         <div className="marquee-track">
           {marqueeItems.map((item, idx) => (
             <div key={idx} className="marquee-card">
-              <div className="marquee-img-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={item.image} alt={item.name} loading="lazy" />
+              <div className={`marquee-img-wrap${item.contain ? " contain" : ""}`}>
+                <Photo src={item.image} alt={item.name} sizes={SIZES.marquee} />
                 <span className="marquee-badge">{item.tag}</span>
               </div>
               <div className="marquee-body">

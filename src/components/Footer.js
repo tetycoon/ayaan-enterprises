@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { SITE, waLink } from "@/lib/config";
 import { clearStoredCart } from "@/lib/cart";
+import FooterMap from "./FooterMap";
 
 export default function Footer({ onOpenCallback }) {
   return (
@@ -75,6 +76,8 @@ export default function Footer({ onOpenCallback }) {
           <Link href="/bulk-service">Bulk Service</Link>
           <Link href="/products">Spare Parts &amp; New Chairs</Link>
           <Link href="/shop">Buy Office Chairs</Link>
+          <Link href="/office-furniture">Office Furniture</Link>
+          <Link href="/office-furniture/ergonomics">Ergonomic Office Chairs</Link>
         </div>
         <div>
           <h3>Company</h3>
@@ -107,6 +110,7 @@ export default function Footer({ onOpenCallback }) {
           <p>{SITE.address}</p>
           <p>{SITE.hours}</p>
         </div>
+        <FooterMap />
       </div>
 
       <div className="container footer-bottom">

@@ -13,14 +13,12 @@ export const metadata = {
   title: "Chennai's Bulk Office Chair Repair & Cleaning | Ayaan Enterprises",
   description:
     "Corporate office chair repair, deep cleaning, refurbishment and seating solutions operating exclusively across Chennai (OMR, Guindy, Porur, Ambattur, and Central Chennai).",
-  icons: {
-    icon: "/images/logo-mark.png",
-  },
+  // Tab icons come from the app/ file conventions: favicon.ico, icon.png and apple-icon.png
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={sans.variable} suppressHydrationWarning>
+    <html lang="en" className={sans.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <ClientWrapper>{children}</ClientWrapper>
       </body>

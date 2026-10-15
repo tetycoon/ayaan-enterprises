@@ -1,5 +1,7 @@
 import Link from "next/link";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import PhotoGallery from "@/components/PhotoGallery";
+import Photo, { SIZES } from "@/components/Photo";
 
 export const metadata = {
   title: "Corporate Seating Audit Case Studies & Transformations | Ayaan Enterprises",
@@ -7,18 +9,31 @@ export const metadata = {
     "Review before and after transformations across corporate tech parks, BFSI campuses, and managed co-working hubs. Verified zero-downtime execution and 90-day parts warranty."
 };
 
+// Real photos taken by the Ayaan Enterprises team on jobs.
+const JOB_PHOTOS = [
+  {
+    src: "/images/work/job-serviced-mesh-chairs.jpg",
+    alt: "Six black mesh office chairs lined up in a client office after servicing",
+    position: "50% 62%"
+  },
+  {
+    src: "/images/work/job-fitting-star-base.jpg",
+    alt: "Ayaan Enterprises technician fitting a star base and castors to an office chair",
+    position: "50% 60%"
+  },
+  {
+    src: "/images/work/job-fitting-gas-lift.jpg",
+    alt: "Technician fitting a new gas lift to an office chair seat mechanism",
+    position: "50% 60%"
+  }
+];
+
 const PROJECTS = [
   {
     beforeSrc: "/images/work-1-before.jpg",
     afterSrc: "/images/work-1-after.jpg",
     title: "450 Ergonomic Task Chairs Overhauled",
     subtitle: "Tier-1 Technology Campus, OMR Chennai · Weekend Batch Execution"
-  },
-  {
-    beforeSrc: "/images/work-2-before.jpg",
-    afterSrc: "/images/work-2-after.jpg",
-    title: "Executive Boardroom & Cabin Re-Upholstery",
-    subtitle: "Corporate Law Firm, Nungambakkam Chennai · Premium Leatherette"
   },
   {
     beforeSrc: "/images/work-3-before.jpg",
@@ -37,12 +52,6 @@ const PROJECTS = [
     afterSrc: "/images/work-5-after.jpg",
     title: "600 Auditorium & Seminar Seats Shampooed & Disinfected",
     subtitle: "Higher Education & Research Campus, Adyar Chennai · Weekend Deployment"
-  },
-  {
-    beforeSrc: "/images/work-6-before.jpg",
-    afterSrc: "/images/work-6-after.jpg",
-    title: "180 Waiting & Breakout Chairs Re-Covered",
-    subtitle: "Healthcare & Clinical Admin Center, Greams Road Chennai · Anti-Microbial Fabric"
   }
 ];
 
@@ -68,8 +77,13 @@ export default function OurWorkPage() {
             </div>
           </div>
           <figure className="img-slot ratio-16x10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/page-work.jpg" alt="Row of refurbished corporate task chairs ready for Monday morning" />
+            <Photo
+              src={JOB_PHOTOS[0].src}
+              alt={JOB_PHOTOS[0].alt}
+              style={{ objectPosition: JOB_PHOTOS[0].position }}
+              sizes={SIZES.pageHero}
+              hero
+            />
           </figure>
         </div>
       </section>
@@ -101,6 +115,17 @@ export default function OurWorkPage() {
       <section className="section">
         <div className="container">
           <div className="section-head">
+            <span className="eyebrow">On the Job</span>
+            <h2>Photos from our recent jobs</h2>
+            <p>Taken by our team on site: chairs serviced and ready for handover, and repairs in progress.</p>
+          </div>
+          <PhotoGallery photos={JOB_PHOTOS} title="Photos from our recent jobs" portrait />
+        </div>
+      </section>
+
+      <section className="section bg-soft">
+        <div className="container">
+          <div className="section-head">
             <span className="eyebrow">Interactive Verification</span>
             <h2>Drag the Sliders to Inspect Refurbishment Quality</h2>
             <p>
@@ -117,6 +142,35 @@ export default function OurWorkPage() {
                 subtitle={proj.subtitle}
               />
             ))}
+
+            {/* Service overviews (not project results) */}
+            <article className="card service-card">
+              <figure className="img-slot ratio-4x3">
+                <Photo src="/images/service-repair.jpg" alt="Technician replacing the gas lift of an office chair on-site" sizes={SIZES.grid3} />
+              </figure>
+              <div className="body">
+                <span className="tag">Our Service</span>
+                <h3>On-Site Component Repair</h3>
+                <p>Gas lifts, castors, star bases, armrests and tilt mechanisms repaired or replaced at your premises.</p>
+                <Link className="link-arrow" href="/chair-repair">
+                  Repair details
+                </Link>
+              </div>
+            </article>
+
+            <article className="card service-card">
+              <figure className="img-slot ratio-4x3">
+                <Photo src="/images/service-cleaning.jpg" alt="Technician shampoo-cleaning an office chair seat" sizes={SIZES.grid3} />
+              </figure>
+              <div className="body">
+                <span className="tag">Our Service</span>
+                <h3>Office Chair Deep Cleaning</h3>
+                <p>Shampoo extraction and stain removal for fabric, mesh, leatherette, and auditorium chairs.</p>
+                <Link className="link-arrow" href="/chair-cleaning">
+                  Cleaning details
+                </Link>
+              </div>
+            </article>
           </div>
 
           <div className="mt-12 text-center" style={{ marginTop: "48px", textAlign: "center" }}>

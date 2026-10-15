@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { waLink } from "@/lib/config";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import Photo, { SIZES } from "@/components/Photo";
 
 export const metadata = {
   title: "Old Chair Deep Cleaning & Shampooing in Chennai | Ayaan Enterprises",
@@ -38,8 +39,7 @@ export default function ChairCleaningPage() {
             </div>
           </div>
           <figure className="img-slot ratio-16x10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/page-cleaning.jpg" alt="Shampoo extraction cleaning on fabric office chair" />
+            <Photo src="/images/page-cleaning.jpg" alt="Shampoo extraction cleaning on fabric office chair" sizes={SIZES.pageHero} hero />
           </figure>
         </div>
       </section>
@@ -87,6 +87,7 @@ export default function ChairCleaningPage() {
               afterSrc="/images/work-1-after.jpg"
               title="120 Workstation Fabric Chairs Cleaned"
               subtitle="Stain removal & shampoo extraction"
+              sizes="(max-width: 760px) 92vw, 700px"
             />
           </div>
         </div>

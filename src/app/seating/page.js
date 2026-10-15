@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { waLink } from "@/lib/config";
+import Photo, { SIZES } from "@/components/Photo";
 
 export const metadata = {
   title: "Premium Seating Collection | Ayaan Enterprises",
@@ -37,8 +38,7 @@ export default function SeatingPage() {
             </div>
           </div>
           <figure className="img-slot ratio-16x10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/seating-hero.jpg" alt="Bright modern workspace with premium seating" />
+            <Photo src="/images/seating-hero.jpg" alt="Bright modern workspace with premium seating" sizes={SIZES.pageHero} hero />
           </figure>
         </div>
       </section>
@@ -52,8 +52,7 @@ export default function SeatingPage() {
           <div className="grid g-3">
             <article className="card service-card">
               <figure className="img-slot ratio-1x1">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/seating-design.jpg" alt="Close-up of stitched detailing on chair" />
+                <Photo src="/images/seating-design.jpg" alt="Close-up of stitched detailing on chair" sizes={SIZES.grid3} />
               </figure>
               <div className="body">
                 <h3>Refined design</h3>
@@ -63,8 +62,7 @@ export default function SeatingPage() {
 
             <article className="card service-card">
               <figure className="img-slot ratio-1x1">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/seating-comfort.jpg" alt="High-back padded office chairs" />
+                <Photo src="/images/seating-comfort.jpg" alt="High-back padded office chairs" sizes={SIZES.grid3} />
               </figure>
               <div className="body">
                 <h3>Ergonomic support</h3>
@@ -74,8 +72,7 @@ export default function SeatingPage() {
 
             <article className="card service-card">
               <figure className="img-slot ratio-1x1">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/seating-craft.jpg" alt="Close-up of premium materials and stitching" />
+                <Photo src="/images/seating-craft.jpg" alt="Close-up of premium materials and stitching" sizes={SIZES.grid3} />
               </figure>
               <div className="body">
                 <h3>Built to last</h3>

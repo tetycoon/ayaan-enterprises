@@ -3,6 +3,8 @@ import { SITE, waLink } from "@/lib/config";
 import HeroSlides from "@/components/HeroSlides";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import ChairGalleryMarquee from "@/components/ChairGalleryMarquee";
+import GoogleReviews from "@/components/GoogleReviews";
+import Photo, { SIZES } from "@/components/Photo";
 
 export const metadata = {
   title: "Bulk Office Chair Repair & Deep Cleaning in Chennai | Ayaan Enterprises",
@@ -82,60 +84,60 @@ export default function HomePage() {
           <div className="grid g-4">
             <article className="card service-card">
               <figure className="img-slot ratio-4x3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/service-repair.jpg" alt="Technician repairing chair" />
+                <Photo src="/images/service-repair.jpg" alt="Technician repairing chair" sizes={SIZES.grid4} />
               </figure>
               <div className="body">
                 <span className="tag">Most Booked</span>
                 <h3>Chair Repair</h3>
-                <p>Gas lift cylinders, castors, star bases, armrests, tilt mechanisms and seat foam replaced on-site.</p>
+                <p>Professional chair repair services to fix damaged components, restore functionality, and extend the life of your office chairs.</p>
                 <Link className="link-arrow" href="/chair-repair">
-                  Repair details &rarr;
+                  Repair details
                 </Link>
               </div>
             </article>
 
             <article className="card service-card">
               <figure className="img-slot ratio-4x3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/service-cleaning.jpg" alt="Chair deep cleaning" />
+                <Photo src="/images/service-cleaning.jpg" alt="Chair deep cleaning" sizes={SIZES.grid4} />
               </figure>
               <div className="body">
                 <span className="tag">Fast Turnaround</span>
                 <h3>Old Chair Cleaning</h3>
                 <p>Shampoo extraction and stain removal for fabric, mesh, leatherette, and auditorium chairs.</p>
                 <Link className="link-arrow" href="/chair-cleaning">
-                  Cleaning details &rarr;
+                  Cleaning details
                 </Link>
               </div>
             </article>
 
             <article className="card service-card">
               <figure className="img-slot ratio-4x3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/service-bulk.jpg" alt="Bulk corporate refurbishment" />
+                <Photo src="/images/service-bulk.jpg" alt="Bulk corporate refurbishment" sizes={SIZES.grid4} zoom={1.35} />
               </figure>
               <div className="body">
                 <span className="tag">For 50+ Chairs</span>
                 <h3>Bulk Refurbishment</h3>
                 <p>Full overhaul done in planned batch shifts (over weekends or night shifts) with zero office downtime.</p>
                 <Link className="link-arrow" href="/bulk-service">
-                  Bulk service details &rarr;
+                  Bulk service details
                 </Link>
               </div>
             </article>
 
             <article className="card service-card">
-              <figure className="img-slot ratio-4x3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/product-office-chair.jpg" alt="New office chairs" />
+              <figure className="img-slot ratio-4x3 contain">
+                <Photo
+                  src="/images/products/mesh-highback-grey-chrome.jpg"
+                  alt="New grey mesh high-back office chair with headrest and chrome base"
+                  sizes={SIZES.grid4}
+                />
               </figure>
               <div className="body">
                 <span className="tag">Supplies</span>
                 <h3>Buy Chairs &amp; Spares</h3>
                 <p>Brand new ergonomic office chairs and certified spare parts delivered and installed with warranty.</p>
                 <Link className="link-arrow" href="/shop">
-                  Browse catalogue &rarr;
+                  Browse catalogue
                 </Link>
               </div>
             </article>
@@ -162,16 +164,20 @@ export default function HomePage() {
               subtitle="IT Company, OMR Chennai"
             />
             <BeforeAfterSlider
-              beforeSrc="/images/work-2-before.jpg"
-              afterSrc="/images/work-2-after.jpg"
-              title="Executive Chairs Re-upholstered"
-              subtitle="Corporate Office, Nungambakkam Chennai"
-            />
-            <BeforeAfterSlider
               beforeSrc="/images/work-3-before.jpg"
               afterSrc="/images/work-3-after.jpg"
+              beforeAlt="Office chair with a broken castor wheel detached from a worn star base"
+              afterAlt="Same office chair repaired with a new star base, gas lift and castor wheels"
               title="300 Chairs: Base, Gas Lift & Wheels"
               subtitle="Operations Center, DLF Porur Chennai"
+            />
+            <BeforeAfterSlider
+              beforeSrc="/images/work-4-before.jpg"
+              afterSrc="/images/work-4-after.jpg"
+              beforeAlt="Mesh office chair with a heavily stained fabric seat"
+              afterAlt="Same mesh office chair after deep cleaning"
+              title="280 Mesh Chairs Deep Cleaned"
+              subtitle="Co-Working Hub, Olympia Tech Park Guindy"
             />
           </div>
           <div className="text-center" style={{ marginTop: "36px", textAlign: "center" }}>
@@ -226,6 +232,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ===== GOOGLE REVIEWS ===== */}
+      <GoogleReviews />
     </main>
   );
 }

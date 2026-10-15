@@ -8,7 +8,7 @@ export async function GET() {
     const settings = {
       businessName: SITE.name || "Ayaan Enterprises",
       phone: SITE.phone || "+91 81222 33887",
-      address: SITE.address || "Plot No. 18, SIDCO Industrial Estate, Guindy, Chennai - 600032",
+      address: SITE.address || "2nd Floor, ANANDHAM ELITE, 1, MRTS Road, 1st Street, Velachery, Chennai, Tamil Nadu 600042, India.",
       gstin: "33AABCA1234F1Z9",
       bank: "Bank: HDFC Bank\nA/c No: 50200081223388\nIFSC: HDFC0001234\nBranch: Guindy, Chennai",
       gstPct: 18,

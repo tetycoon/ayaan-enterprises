@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { waLink } from "@/lib/config";
+import Photo, { SIZES } from "@/components/Photo";
 
 export const metadata = {
   title: "Office Chair Repair Services in Chennai | Ayaan Enterprises",
@@ -37,8 +38,7 @@ export default function ChairRepairPage() {
             </div>
           </div>
           <figure className="img-slot ratio-16x10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/page-repair.jpg" alt="Technician repairing office chair" />
+            <Photo src="/images/page-repair.jpg" alt="Technician repairing office chair" sizes={SIZES.pageHero} zoom={1.15} hero />
           </figure>
         </div>
       </section>
@@ -93,8 +93,7 @@ export default function ChairRepairPage() {
       <section className="section bg-soft">
         <div className="container split">
           <figure className="img-slot ratio-4x3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/repair-onsite.jpg" alt="On-site chair repair setup in office" />
+            <Photo src="/images/repair-onsite.jpg" alt="On-site chair repair setup in office" sizes={SIZES.split} />
           </figure>
           <div>
             <span className="eyebrow">Our Process</span>

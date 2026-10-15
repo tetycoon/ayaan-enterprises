@@ -6,6 +6,9 @@ import Link from "next/link";
 import { SITE, waLink } from "@/lib/config";
 import { Store } from "@/lib/store";
 import { clearStoredCart, getCartSummary } from "@/lib/cart";
+import { OFFICE_FURNITURE } from "@/lib/furniture";
+
+const FURNITURE_SERVICE = "Office Furniture";
 
 const AVAILABLE_CHAIR_TYPES = [
   "Ergonomic High-Back",
@@ -40,6 +43,7 @@ function QuoteFormInner() {
   const [primaryIssue, setPrimaryIssue] = useState("Sinking gas lift / cylinder");
   const [selectedChairTypes, setSelectedChairTypes] = useState([]);
   const [selectedChairsText, setSelectedChairsText] = useState("");
+  const [furnitureCategory, setFurnitureCategory] = useState("");
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [phone, setPhone] = useState("");
@@ -96,6 +100,10 @@ function QuoteFormInner() {
         setService("Chair Repair & Spares");
         clearStoredCart();
       }
+      const category = searchParams.get("category");
+      setFurnitureCategory(
+        svc === FURNITURE_SERVICE && OFFICE_FURNITURE.some((c) => c.label === category) ? category : ""
+      );
       setSelectedChairTypes([]);
       setSelectedChairsText("");
       setQuantity("");
@@ -157,6 +165,8 @@ function QuoteFormInner() {
 
     setErrorMsg("");
     const isNewChair = service === "Buy New Office Chairs";
+    const isFurniture = service === FURNITURE_SERVICE;
+    const furnitureLine = `Furniture category: ${furnitureCategory || "Not specified"}`;
 
     const enq = {
       source: "Quick Quote Screen",
@@ -164,13 +174,21 @@ function QuoteFormInner() {
       chairTypes: isNewChair ? (selectedChairTypes.length ? selectedChairTypes : ["Office Chairs"]) : [],
       quantity: Number(quantity) || 0,
       preferredDate,
-      problems: isNewChair ? ["New Chair Purchase"] : (primaryIssue ? [primaryIssue] : []),
+      problems: isNewChair
+        ? ["New Chair Purchase"]
+        : isFurniture
+          ? [furnitureLine]
+          : (primaryIssue ? [primaryIssue] : []),
       name: name || "Customer",
       company,
       email: "",
       phone,
       city: city || "Chennai",
-      message: isNewChair && selectedChairsText ? `Selected models: ${selectedChairsText}\n${message}` : message,
+      message: isNewChair && selectedChairsText
+        ? `Selected models: ${selectedChairsText}\n${message}`
+        : isFurniture
+          ? `${furnitureLine}\n${message}`
+          : message,
       photos
     };
 
@@ -180,15 +198,20 @@ function QuoteFormInner() {
   };
 
   const isNewChair = service === "Buy New Office Chairs";
+  const isFurniture = service === FURNITURE_SERVICE;
 
   const getWaMessage = () => {
     return (
-      `Hi Ayaan Enterprises, I requested a chair service quote (${refNo}).\n` +
+      (isFurniture
+        ? `Hi Ayaan Enterprises, I sent an office furniture enquiry (${refNo}).\n`
+        : `Hi Ayaan Enterprises, I requested a chair service quote (${refNo}).\n`) +
       `Service: ${service}\n` +
-      `Quantity: ${quantity} chairs\n` +
+      (isFurniture
+        ? `Furniture category: ${furnitureCategory || "Not specified"}\nQuantity: ${quantity}\n`
+        : `Quantity: ${quantity} chairs\n`) +
       (isNewChair && (selectedChairsText || selectedChairTypes.length)
         ? `Selected Chair Types: ${selectedChairsText || selectedChairTypes.join(", ")}\n`
-        : (!isNewChair && primaryIssue ? `Issue: ${primaryIssue}\n` : "")) +
+        : (!isNewChair && !isFurniture && primaryIssue ? `Issue: ${primaryIssue}\n` : "")) +
       `Contact: ${name} (${phone})\n` +
       (city ? `Location: ${city}\n` : "") +
       (company ? `Company: ${company}\n` : "") +
@@ -272,17 +295,18 @@ function QuoteFormInner() {
             <option>Chair Deep Cleaning &amp; Shampooing</option>
             <option>Bulk Office Refurbishment</option>
             <option>Buy New Office Chairs</option>
+            <option>{FURNITURE_SERVICE}</option>
           </select>
         </label>
 
-        {/* Chair Count */}
+        {/* Chair Count (item count for office furniture) */}
         <label>
-          <span>Number of Chairs <span className="req">*</span></span>
+          <span>{isFurniture ? "Quantity" : "Number of Chairs"} <span className="req">*</span></span>
           <input
             type="number"
             min="1"
             required
-            placeholder="e.g. 20"
+            placeholder={isFurniture ? "e.g. 2" : "e.g. 20"}
             inputMode="numeric"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
@@ -362,8 +386,21 @@ function QuoteFormInner() {
           />
         </label>
 
+        {/* Furniture category: ONLY shown for office furniture enquiries */}
+        {isFurniture && (
+          <label>
+            <span>Furniture Category</span>
+            <select value={furnitureCategory} onChange={(e) => setFurnitureCategory(e.target.value)}>
+              <option value="">Not sure / several categories</option>
+              {OFFICE_FURNITURE.map((c) => (
+                <option key={c.slug}>{c.label}</option>
+              ))}
+            </select>
+          </label>
+        )}
+
         {/* Primary Issue: ONLY shown for Repair / Cleaning services */}
-        {!isNewChair && (
+        {!isNewChair && !isFurniture && (
           <label>
             <span>Primary Issue</span>
             <select value={primaryIssue} onChange={(e) => setPrimaryIssue(e.target.value)}>

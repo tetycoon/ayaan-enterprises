@@ -5,7 +5,8 @@ export const CATALOGUE = [
     id: "ergo-hb",
     name: "Ergonomic High-Back Chair",
     cat: "Ergonomic",
-    img: "/images/hero-ergonomic.jpg",
+    img: "/images/products/ergonomic-highback-black.jpg",
+    white: true,
     price: null,
     features: ["Adjustable headrest", "3D armrests", "Synchro tilt with lock"]
   },
@@ -13,7 +14,7 @@ export const CATALOGUE = [
     id: "exec-lth",
     name: "Executive Leatherette Chair",
     cat: "Executive",
-    img: "/images/hero-executive.jpg",
+    img: "/images/products/executive-leatherette-black.jpg",
     white: true,
     price: null,
     features: ["High back with headrest", "Chrome arms & base", "Padded leatherette"]
@@ -22,7 +23,8 @@ export const CATALOGUE = [
     id: "mesh-task",
     name: "Mesh Back Task Chair",
     cat: "Mesh",
-    img: "/images/hero-mesh.jpg",
+    img: "/images/products/mesh-midback-black.png",
+    white: true,
     price: null,
     features: ["Breathable mesh back", "Cushioned fabric seat", "Height adjustable"]
   },
@@ -30,7 +32,8 @@ export const CATALOGUE = [
     id: "ergo-pro",
     name: "Pro Ergonomic Mesh Chair",
     cat: "Ergonomic",
-    img: "/images/hero-desk.jpg",
+    img: "/images/products/mesh-highback-grey-chrome.jpg",
+    white: true,
     price: null,
     features: ["Adjustable lumbar support", "Headrest & 3D arms", "Ideal for long hours"]
   },
@@ -38,7 +41,8 @@ export const CATALOGUE = [
     id: "task-compact",
     name: "Compact Office Chair",
     cat: "Mesh",
-    img: "/images/product-office-chair.jpg",
+    img: "/images/products/compact-lowback-black.jpg",
+    white: true,
     price: null,
     features: ["Space-saving design", "Fixed arms", "Smooth castors"]
   },

@@ -196,7 +196,7 @@ export async function initDb(force = false) {
         );
         await sql.query(
           "INSERT INTO settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO NOTHING",
-          ["address", SITE.address || "Plot No. 18, SIDCO Industrial Estate, Guindy, Chennai - 600032"]
+          ["address", SITE.address || "2nd Floor, ANANDHAM ELITE, 1, MRTS Road, 1st Street, Velachery, Chennai, Tamil Nadu 600042, India."]
         );
         await sql.query(
           "INSERT INTO settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO NOTHING",
@@ -276,7 +276,7 @@ export async function initDb(force = false) {
       db.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)").run("pin", "Ayaan@2026");
       db.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)").run("businessName", SITE.name || "Ayaan Enterprises");
       db.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)").run("phone", SITE.phone || "+91 81222 33887");
-      db.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)").run("address", SITE.address || "Plot No. 18, SIDCO Industrial Estate, Guindy, Chennai - 600032");
+      db.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)").run("address", SITE.address || "2nd Floor, ANANDHAM ELITE, 1, MRTS Road, 1st Street, Velachery, Chennai, Tamil Nadu 600042, India.");
       db.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)").run("gstin", "33AABCA1234F1Z9");
       db.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)").run("gstPct", "18");
     }

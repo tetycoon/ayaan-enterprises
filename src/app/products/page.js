@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { waLink } from "@/lib/config";
+import Photo, { SIZES } from "@/components/Photo";
 
 export const metadata = {
   title: "New Office Chairs & Chair Spare Parts Supply | Ayaan Enterprises",
@@ -37,8 +38,7 @@ export default function ProductsPage() {
             </div>
           </div>
           <figure className="img-slot ratio-16x10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/page-products.jpg" alt="Modern office chairs at workstation" />
+            <Photo src="/images/page-products.jpg" alt="Modern office chairs at workstation" sizes={SIZES.pageHero} hero />
           </figure>
         </div>
       </section>
@@ -51,57 +51,53 @@ export default function ProductsPage() {
           </div>
           <div className="grid g-4">
             <article className="card service-card">
-              <figure className="img-slot ratio-1x1">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/prod-mesh.jpg" alt="White ergonomic mesh office chair" />
+              <figure className="img-slot ratio-1x1 contain">
+                <Photo src="/images/products/mesh-highback-white-grey.jpg" alt="Ergonomic mesh office chair with white frame, grey mesh and headrest" sizes={SIZES.grid4} />
               </figure>
               <div className="body">
                 <h3>Ergonomic mesh chairs</h3>
                 <p>Breathable mesh back, adjustable lumbar support, synchro tilt.</p>
                 <Link className="link-arrow" href="/quote?service=New%20Chairs">
-                  Ask price &rarr;
-                </Link>
-              </div>
-            </article>
-
-            <article className="card service-card">
-              <figure className="img-slot ratio-1x1">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/prod-office.jpg" alt="Fabric swivel workstation chair" />
-              </figure>
-              <div className="body">
-                <h3>Workstation chairs</h3>
-                <p>Comfortable fabric revolving chairs for everyday desk use.</p>
-                <Link className="link-arrow" href="/quote?service=New%20Chairs">
-                  Ask price &rarr;
+                  Ask price
                 </Link>
               </div>
             </article>
 
             <article className="card service-card">
               <figure className="img-slot ratio-1x1 contain">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/hero-executive.jpg" alt="Executive high-back leather chair" />
+                <Photo src="/images/products/mesh-midback-black-angle.png" alt="Black mid-back mesh workstation chair with adjustable arms" sizes={SIZES.grid4} />
+              </figure>
+              <div className="body">
+                <h3>Workstation chairs</h3>
+                <p>Comfortable fabric revolving chairs for everyday desk use.</p>
+                <Link className="link-arrow" href="/quote?service=New%20Chairs">
+                  Ask price
+                </Link>
+              </div>
+            </article>
+
+            <article className="card service-card">
+              <figure className="img-slot ratio-1x1 contain">
+                <Photo src="/images/products/executive-leatherette-black.jpg" alt="Black high-back leatherette executive chair with chrome arms and base" sizes={SIZES.grid4} />
               </figure>
               <div className="body">
                 <h3>Executive chairs</h3>
                 <p>High-back leatherette chairs with chrome accents for cabins.</p>
                 <Link className="link-arrow" href="/quote?service=New%20Chairs">
-                  Ask price &rarr;
+                  Ask price
                 </Link>
               </div>
             </article>
 
             <article className="card service-card">
               <figure className="img-slot ratio-1x1">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/prod-visitor.jpg" alt="Black cantilever visitor chair" />
+                <Photo src="/images/prod-visitor.jpg" alt="Black cantilever visitor chair" sizes={SIZES.grid4} />
               </figure>
               <div className="body">
                 <h3>Visitor &amp; training</h3>
                 <p>Cantilever, stackable and writing-pad chairs for training rooms.</p>
                 <Link className="link-arrow" href="/quote?service=New%20Chairs">
-                  Ask price &rarr;
+                  Ask price
                 </Link>
               </div>
             </article>
