@@ -592,7 +592,11 @@ table.compare tr:last-child td { border-bottom: 0; }
   font-size: .88rem;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.ba input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 5; margin: 0; }
+.ba { cursor: ew-resize; touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+.ba img { -webkit-user-drag: none; pointer-events: none; }
+/* dragging is handled on the frame; the range input stays for keyboard / screen readers */
+.ba input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 5; margin: 0; pointer-events: none; }
+.ba:has(input:focus-visible) .ba-handle { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), 0 0 0 4px var(--teal-light); }
 .ba-label {
   position: absolute;
   top: 14px;
@@ -612,6 +616,43 @@ table.compare tr:last-child td { border-bottom: 0; }
 .ba-meta { margin-top: 14px; }
 .ba-meta h3 { font-size: 1.05rem; margin-bottom: 2px; }
 .ba-meta p { font-size: .9rem; color: var(--muted); margin: 0; }
+
+/* Featured transformation (home "Our Work"): large portrait slider + copy and CTA */
+.ba-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+  max-width: 1040px;
+  margin: 0 auto 56px;
+}
+.ba-feature .ba.ba-portrait { aspect-ratio: 3 / 4; border-radius: 22px; box-shadow: 0 28px 60px -18px rgba(9, 24, 43, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.05); }
+.ba-feature .ba-portrait .img-slot > img { object-fit: cover; }
+.ba-feature-tag {
+  display: inline-block;
+  background: #fff1d9;
+  color: #8a5300;
+  font-size: .74rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+.ba-feature-copy h3 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1.25; margin-bottom: 12px; }
+.ba-feature-copy > p { color: var(--muted); margin-bottom: 20px; }
+.ba-feature-copy .check-list { margin-bottom: 28px; }
+.ba-feature-hint { display: block; margin-top: 12px; font-size: .84rem; color: var(--muted); text-align: center; }
+.ba-feature-more { max-width: 1040px; margin: 0 auto; }
+@media (max-width: 980px) {
+  .ba-feature { grid-template-columns: minmax(0, 1fr); gap: 32px; max-width: 560px; margin-bottom: 44px; }
+}
+@media (max-width: 640px) {
+  .ba-feature { gap: 24px; margin-bottom: 36px; }
+  .ba-feature .ba.ba-portrait { aspect-ratio: 3 / 4; border-radius: 18px; }
+  .ba-feature-copy .btn { width: 100%; justify-content: center; }
+}
 
 /* Quote CTA strip / note */
 .note { background: #fff8eb; border: 1px solid #f7d99d; border-left: 5px solid var(--amber); border-radius: 10px; padding: 18px 20px; color: #5c4210; }

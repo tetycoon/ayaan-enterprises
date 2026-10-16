@@ -154,23 +154,43 @@ export default function HomePage() {
           <div className="section-head center" style={{ maxWidth: "680px", margin: "0 auto 44px" }}>
             <span className="eyebrow">Our Work</span>
             <h2>Before &amp; After Image Transformation</h2>
-            <p>Drag the slider to see the actual results from our recent chair repair and deep cleaning projects.</p>
+            <p>Drag the slider to see the actual results from our recent chair repair, refurbishment, and deep cleaning projects.</p>
           </div>
-          <div className="grid g-3">
+          <div className="ba-feature">
+            <div>
+              <BeforeAfterSlider
+                className="ba-portrait"
+                beforeSrc="/images/work/chair-bases-before.png"
+                afterSrc="/images/work/chair-bases-after.png"
+                beforeAlt="Worn high-back mesh office chair with a torn seat, damaged armrests and broken castor wheels"
+                afterAlt="Same high-back mesh office chair after repair, re-upholstery and cleaning"
+                sizes="(max-width: 640px) 92vw, (max-width: 980px) 560px, 520px"
+              />
+              <span className="ba-feature-hint">&larr; Drag to compare &rarr;</span>
+            </div>
+            <div className="ba-feature-copy">
+              <span className="ba-feature-tag">Featured Transformation</span>
+              <h3>High-Back Mesh Chair: Repaired &amp; Refurbished</h3>
+              <p>The same office chair before and after our work, with no new chair needed.</p>
+              <ul className="check-list">
+                <li>Torn seat re-padded and re-upholstered</li>
+                <li>Headrest and mesh backrest restored</li>
+                <li>Damaged armrests replaced</li>
+                <li>Star base and castor wheels replaced</li>
+                <li>Deep cleaned and tested before handover</li>
+              </ul>
+              <Link className="btn btn-amber" href="/quote?service=Bulk%20Office%20Refurbishment">
+                Request Bulk Chair Service
+              </Link>
+            </div>
+          </div>
+          <div className="grid g-2 ba-feature-more">
             <BeforeAfterSlider
               beforeSrc="/images/work-1-before.jpg"
               afterSrc="/images/work-1-after.jpg"
               title="Fabric Chairs Deep Cleaned"
               subtitle="IT Company, OMR Chennai"
-            />
-            <BeforeAfterSlider
-              className="ba-full-subject"
-              beforeSrc="/images/work/chair-bases-before.png"
-              afterSrc="/images/work/chair-bases-after.png"
-              beforeAlt="Damaged office chair with a broken armrest support and damaged caster wheels"
-              afterAlt="Same office chair repaired with a new star base, gas lift and castor wheels"
-              title="Chair Bases, Gas Lifts & Wheels"
-              subtitle="Operations Center, DLF Porur Chennai"
+              sizes="(max-width: 640px) 92vw, 510px"
             />
             <BeforeAfterSlider
               beforeSrc="/images/work-4-before.jpg"
@@ -179,6 +199,7 @@ export default function HomePage() {
               afterAlt="Same mesh office chair after deep cleaning"
               title="Mesh Chairs Deep Cleaned"
               subtitle="Co-Working Hub, Olympia Tech Park Guindy"
+              sizes="(max-width: 640px) 92vw, 510px"
             />
           </div>
           <div className="text-center" style={{ marginTop: "36px", textAlign: "center" }}>
