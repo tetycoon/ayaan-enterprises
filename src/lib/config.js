@@ -17,7 +17,6 @@ export const SITE = {
   hours: "Mon - Sat: 8:30 AM - 7:30 PM",
   city: "Chennai",
   serviceServing: "Serving Clients All Over Chennai",
-  serviceAreas: ["Guindy", "OMR", "Porur", "Ambattur", "Central Chennai", "GST Road"],
   stats: {
     chairs: "35,000+",
     companies: "420+",

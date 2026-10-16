@@ -83,20 +83,7 @@ export default function Footer({ onOpenCallback }) {
           <h3>Company</h3>
           <Link href="/our-work">Our Completed Work</Link>
           <Link href="/quote" onClick={() => clearStoredCart()}>Request a Quote</Link>
-          <button
-            type="button"
-            className="link-btn text-left"
-            style={{
-              color: "inherit",
-              textDecoration: "none",
-              cursor: "pointer",
-              background: "none",
-              border: "none",
-              padding: 0,
-              font: "inherit"
-            }}
-            onClick={onOpenCallback}
-          >
+          <button type="button" className="footer-link-btn" onClick={onOpenCallback}>
             Request a Callback
           </button>
           <Link href="/admin">Staff Login</Link>
@@ -115,7 +102,7 @@ export default function Footer({ onOpenCallback }) {
 
       <div className="container footer-bottom">
         <span>&copy; 2026 {SITE.name}. All rights reserved.</span>
-        <span>Serving Chennai: {SITE.serviceAreas.join(" • ")}</span>
+        <span>Service &amp; Repair All Over Chennai | Sales All Over Tamil Nadu</span>
       </div>
     </footer>
   );

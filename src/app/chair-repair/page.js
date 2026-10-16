@@ -80,12 +80,6 @@ export default function ChairRepairPage() {
               <h3>Armrests</h3>
               <p>Loose, cracked, or missing armrests replaced with fixed or adjustable arm assemblies.</p>
             </div>
-
-            <div className="card card-top amber">
-              <div className="card-icon">✂</div>
-              <h3>Foam &amp; Upholstery</h3>
-              <p>High-density seat foam replacement and re-upholstery in fabric, leatherette, or mesh in your company colors.</p>
-            </div>
           </div>
         </div>
       </section>

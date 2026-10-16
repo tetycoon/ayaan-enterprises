@@ -547,6 +547,17 @@ table.compare tr:last-child td { border-bottom: 0; }
   user-select: none;
 }
 .ba .img-slot { position: absolute; inset: 0; aspect-ratio: auto; border-radius: 0; }
+.ba-full-subject .img-slot { background: #17202b; }
+.ba-full-subject .img-slot::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  background: var(--ba-bg) center / cover no-repeat;
+  filter: blur(14px);
+  opacity: .62;
+  transform: scale(1.04);
+}
+.ba-full-subject .img-slot > img { z-index: 1; object-fit: contain; }
 .ba .ba-after { clip-path: inset(0 0 0 var(--pos)); }
 .ba::after {
   content: "";
@@ -744,12 +755,29 @@ legend { font-weight: 700; font-size: .92rem; color: var(--navy); margin-bottom:
   margin-bottom: 9px;
   transition: color 0.18s ease, transform 0.18s ease;
 }
-.footer-grid a:hover {
+.footer-grid > * { min-width: 0; }
+.footer-grid .footer-link-btn {
+  display: block;
+  width: fit-content;
+  margin: 0 0 9px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: #b9cadb;
+  font: inherit;
+  line-height: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+.footer-grid a:hover,
+.footer-grid .footer-link-btn:hover {
   color: #ffffff;
   transform: translateX(3px);
   text-decoration: none;
 }
-.footer-grid p { margin: 0 0 9px; }
+.footer-grid p { margin: 0 0 9px; overflow-wrap: break-word; }
+.footer-grid > :first-child p { max-width: 34ch; }
 .footer-brand { display: block; color: #fff; font-size: 1.3rem; font-weight: 900; margin-bottom: 10px; }
 .footer-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; padding-bottom: 90px; font-size: .84rem; }
 
@@ -899,19 +927,19 @@ html {
 }
 
 /* ==========================================================
-   Animated photo hero (home): slow zoom + crossfade slides,
-   captions slide in, text and stats animate on load
+   Animated photo hero (home): subtle zoom + crossfade slides,
+   captions slide in, and supporting copy enters in sequence
    ========================================================== */
 .hero-slides { position: relative; width: 100%; max-width: 560px; margin: 0 auto; aspect-ratio: 1 / 1; border-radius: 26px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.1); background: var(--navy-2); isolation: isolate; }
-.hero-slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.2s ease; z-index: 0; }
+.hero-slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1); z-index: 0; }
 .hero-slide.is-active { opacity: 1; z-index: 1; }
 .hero-slide img { width: 100%; height: 100%; object-fit: cover; transform-origin: center; will-change: transform; }
-.hero-slide.is-active img { animation: kenburns-a 7.5s ease-out forwards; }
+.hero-slide.is-active img { animation: kenburns-a 7.5s ease-in-out forwards; }
 .hero-slide:nth-child(2n).is-active img { animation-name: kenburns-b; }
-@keyframes kenburns-a { from { transform: scale(1.18) translate(2%, 2%); } to { transform: scale(1.02) translate(0, 0); } }
-@keyframes kenburns-b { from { transform: scale(1.02) translate(-1%, 0); } to { transform: scale(1.16) translate(-3%, -2%); } }
+@keyframes kenburns-a { from { transform: scale(1.04) translate(0.5%, 0.5%); } to { transform: scale(1.1) translate(-0.5%, -0.5%); } }
+@keyframes kenburns-b { from { transform: scale(1.06) translate(-0.5%, 0); } to { transform: scale(1.12) translate(0.5%, -0.5%); } }
 .hero-slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,28,47,0) 45%, rgba(12,28,47,.88) 100%); }
-.hero-slide figcaption { position: absolute; left: 24px; right: 24px; bottom: 54px; z-index: 2; color: #fff; opacity: 0; transform: translateY(18px); transition: opacity .7s ease .5s, transform .7s ease .5s; }
+.hero-slide figcaption { position: absolute; left: 24px; right: 24px; bottom: 54px; z-index: 2; color: #fff; opacity: 0; transform: translateY(12px); transition: opacity .65s ease .35s, transform .65s cubic-bezier(0.16, 1, 0.3, 1) .35s; }
 .hero-slide.is-active figcaption { opacity: 1; transform: none; }
 .hero-slide figcaption b { display: block; font-size: 1.35rem; font-weight: 900; line-height: 1.2; text-shadow: 0 2px 12px rgba(0,0,0,.35); }
 .hero-slide figcaption span { display: block; font-size: .95rem; color: #cfe0ee; margin-top: 4px; }
@@ -925,50 +953,43 @@ html {
 .hero-dots button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .hero-slides:hover .hero-progress i.run { animation-play-state: paused; }
 
-/* Hero dynamic entrance: Left content glides from LEFT, Right stage glides from RIGHT */
+/* Keep the headline immediately legible while the supporting copy settles in. */
 .hero-copy > * {
   opacity: 0;
-  transform: translateX(-44px) translateY(4px);
-  animation: heroLeftIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(14px);
+  animation: heroCopyIn 0.68s cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: opacity, transform;
 }
-.hero-copy > *:nth-child(1) { animation-delay: 0.08s; } /* Eyebrow badge */
-.hero-copy > *:nth-child(2) { animation-delay: 0.22s; } /* Heading H1 */
-.hero-copy > *:nth-child(3) { animation-delay: 0.36s; } /* Lead text */
-.hero-copy > *:nth-child(4) { animation-delay: 0.50s; } /* Bullet points */
-.hero-copy > *:nth-child(5) { animation-delay: 0.64s; } /* CTA buttons */
-.hero-copy > *:nth-child(6) { animation-delay: 0.78s; } /* Stats band */
-
-@keyframes heroLeftIn {
-  from {
-    opacity: 0;
-    transform: translateX(-44px) translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) translateY(0);
-  }
+.hero-copy > *:nth-child(1) { animation-delay: 0.04s; }
+.hero-copy > *:nth-child(2) { animation-delay: 0s; }
+.hero-copy > *:nth-child(3) { animation-delay: 0.12s; }
+.hero-copy > *:nth-child(4) { animation-delay: 0.2s; }
+.hero-copy > *:nth-child(5) { animation-delay: 0.28s; }
+.hero-copy > *:nth-child(6) { animation-delay: 0.36s; }
+.hero-copy > h1 {
+  opacity: 1;
+  transform: none;
+  animation: heroHeadingIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes heroCopyIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroHeadingIn {
+  from { transform: translateY(8px); }
+  to { transform: translateY(0); }
 }
 
-/* Right side chair showcase glides in from the RIGHT */
+/* The image stage enters softly; the existing slide movement adds depth afterward. */
 .hero-stage-wrap {
   opacity: 0;
-  transform: translateX(54px) scale(0.94);
-  animation: heroRightIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+  transform: translateY(18px) scale(0.985);
+  animation: heroStageIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
   will-change: opacity, transform;
 }
-
-@keyframes heroRightIn {
-  from {
-    opacity: 0;
-    transform: translateX(54px) scale(0.94);
-    filter: blur(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-    filter: blur(0);
-  }
+@keyframes heroStageIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .hero h1 em {
@@ -977,7 +998,7 @@ html {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shine 5s linear infinite;
+  animation: shine 8s linear infinite;
 }
 @keyframes shine { to { background-position: -200% 0; } }
 
@@ -998,21 +1019,6 @@ html {
 .hero .hero-chip { z-index: 4; }
 
 @media (max-width: 640px) {
-  .hero-copy > * {
-    transform: translateX(-18px) translateY(4px);
-    animation-name: heroLeftInMobile;
-  }
-  @keyframes heroLeftInMobile {
-    from { opacity: 0; transform: translateX(-18px) translateY(4px); }
-    to { opacity: 1; transform: none; }
-  }
-  .hero-stage-wrap {
-    animation-name: heroRightInMobile;
-  }
-  @keyframes heroRightInMobile {
-    from { opacity: 0; transform: translateY(24px) scale(0.96); filter: blur(2px); }
-    to { opacity: 1; transform: none; filter: blur(0); }
-  }
   .hero-slide figcaption { left: 16px; right: 16px; bottom: 44px; }
   .hero-slide figcaption b { font-size: 1.1rem; }
   .hero-slide figcaption span { font-size: .85rem; }
@@ -1020,9 +1026,10 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-slide.is-active img, .hero h1 em, .hero .btn-amber::after { animation: none; }
+  .hero-slide img, .hero h1 em, .hero .btn-amber::after, .hero-progress i, .hero-chip { animation: none; }
   .hero-copy > *, .hero-stage-wrap { animation: none; opacity: 1; transform: none; }
-  .hero-slide, .hero-slide figcaption { transition: none; }
+  .hero-slide, .hero-slide figcaption, .hero-dots button { transition: none; }
+  .hero-slide img, .hero-chip { transform: none; }
 }
 
 /* keep floating chips clear of the slide captions */
@@ -1745,8 +1752,8 @@ body.has-cart .footer-bottom { padding-bottom: 150px; }
   .footer-cta p { font-size: .88rem; }
   .footer-grid { gap: 20px; padding-top: 30px; padding-bottom: 24px; }
   .footer-grid h3 { font-size: .82rem; margin-bottom: 10px; }
-  .footer-grid a, .footer-grid p { font-size: .84rem; margin-bottom: 7px; }
-  .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 6px; padding-bottom: 90px; font-size: .76rem; }
+  .footer-grid a, .footer-grid p, .footer-grid .footer-link-btn { font-size: .84rem; margin-bottom: 7px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; text-align: left; gap: 6px; padding-bottom: 90px; font-size: .76rem; }
   .chair-gallery-section { padding: 44px 0 38px; }
 }
 

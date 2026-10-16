@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { waLink } from "@/lib/config";
@@ -11,39 +11,28 @@ const CATEGORIES = ["All", "Ergonomic", "Executive", "Mesh", "Visitor & waiting"
 export default function ShopPage() {
   const [filter, setFilter] = useState("All");
   const [cart, setCart] = useState({});
+  const cartRef = useRef({});
   const router = useRouter();
 
   useEffect(() => {
-    setCart(getStoredCart());
+    const storedCart = getStoredCart();
+    cartRef.current = storedCart;
+    setCart(storedCart);
   }, []);
 
-  const updateQty = (id, delta) => {
-    setCart((prev) => {
-      const cur = prev[id] || 0;
-      const nextQty = Math.max(0, cur + delta);
-      const copy = { ...prev };
-      if (nextQty === 0) {
-        delete copy[id];
-      } else {
-        copy[id] = nextQty;
-      }
-      saveStoredCart(copy);
-      return copy;
-    });
-  };
+  const updateQty = (id, getNextQty) => {
+    const currentQty = cartRef.current[id] || 0;
+    const nextQty = Math.max(0, getNextQty(currentQty));
+    const nextCart = { ...cartRef.current };
+    if (nextQty === 0) {
+      delete nextCart[id];
+    } else {
+      nextCart[id] = nextQty;
+    }
 
-  const setExactQty = (id, val) => {
-    setCart((prev) => {
-      const nextQty = Math.max(0, parseInt(val, 10) || 0);
-      const copy = { ...prev };
-      if (nextQty === 0) {
-        delete copy[id];
-      } else {
-        copy[id] = nextQty;
-      }
-      saveStoredCart(copy);
-      return copy;
-    });
+    cartRef.current = nextCart;
+    setCart(nextCart);
+    saveStoredCart(nextCart);
   };
 
   const totalItems = Object.values(cart).reduce((a, b) => a + (Number(b) || 0), 0);
@@ -159,7 +148,7 @@ export default function ShopPage() {
                         <button
                           type="button"
                           className="btn btn-sm btn-outline"
-                          onClick={() => updateQty(p.id, 1)}
+                          onClick={() => updateQty(p.id, (qty) => qty + 1)}
                           aria-label={`Add ${p.name}`}
                         >
                           + Add
@@ -170,7 +159,7 @@ export default function ShopPage() {
                             type="button"
                             className="qty-btn"
                             aria-label="Decrease quantity"
-                            onClick={() => updateQty(p.id, -1)}
+                            onClick={() => updateQty(p.id, (qty) => qty - 1)}
                           >
                             −
                           </button>
@@ -180,13 +169,13 @@ export default function ShopPage() {
                             max="999"
                             value={qty}
                             aria-label={`Quantity for ${p.name}`}
-                            onChange={(e) => setExactQty(p.id, e.target.value)}
+                            onChange={(e) => updateQty(p.id, () => parseInt(e.target.value, 10) || 0)}
                           />
                           <button
                             type="button"
                             className="qty-btn"
                             aria-label="Increase quantity"
-                            onClick={() => updateQty(p.id, 1)}
+                            onClick={() => updateQty(p.id, (qty) => qty + 1)}
                           >
                             +
                           </button>

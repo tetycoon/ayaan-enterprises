@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { SITE, waLink } from "@/lib/config";
-import { getStoredCart, getCartSummary, clearStoredCart } from "@/lib/cart";
+import { getStoredCart, getCartSummary } from "@/lib/cart";
 import { OFFICE_FURNITURE, officeFurnitureHref } from "@/lib/furniture";
 
 // Office storage is covered by the Office Cabinets category in the Office Furniture menu.
@@ -128,19 +128,10 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [cartSummary, setCartSummary] = useState({ totalQty: 0, textSummary: "", typesList: [] });
   const pathname = usePathname();
-  const router = useRouter();
   // The mobile menu stays open only on the path it was opened on, so it closes after navigation.
   const [navOpenOn, setNavOpenOn] = useState(null);
   const navOpen = navOpenOn === pathname;
   const setNavOpen = (value) => setNavOpenOn(value ? pathname : null);
-
-  const handleGetFreeQuote = () => {
-    clearStoredCart();
-    setNavOpen(false);
-    if (pathname === "/quote") {
-      router.replace("/quote");
-    }
-  };
 
   useEffect(() => {
     const updateCart = () => {
@@ -269,9 +260,6 @@ export default function Header() {
               <span className="nav-cart-badge">{cartSummary.totalQty}</span>
             </Link>
           )}
-          <Link className="btn btn-amber btn-sm nav-cta" href="/quote" onClick={handleGetFreeQuote}>
-            Get Free Quote
-          </Link>
         </nav>
       </div>
     </header>

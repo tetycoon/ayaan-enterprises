@@ -153,22 +153,23 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head center" style={{ maxWidth: "680px", margin: "0 auto 44px" }}>
             <span className="eyebrow">Our Work</span>
-            <h2>Before &amp; After Transformations</h2>
-            <p>Drag the sliders to see the actual results from our recent chair repair and deep cleaning projects.</p>
+            <h2>Before &amp; After Image Transformation</h2>
+            <p>Drag the slider to see the actual results from our recent chair repair and deep cleaning projects.</p>
           </div>
           <div className="grid g-3">
             <BeforeAfterSlider
               beforeSrc="/images/work-1-before.jpg"
               afterSrc="/images/work-1-after.jpg"
-              title="120 Fabric Chairs Deep Cleaned"
+              title="Fabric Chairs Deep Cleaned"
               subtitle="IT Company, OMR Chennai"
             />
             <BeforeAfterSlider
-              beforeSrc="/images/work-3-before.jpg"
-              afterSrc="/images/work-3-after.jpg"
-              beforeAlt="Office chair with a broken castor wheel detached from a worn star base"
+              className="ba-full-subject"
+              beforeSrc="/images/work/chair-bases-before.png"
+              afterSrc="/images/work/chair-bases-after.png"
+              beforeAlt="Damaged office chair with a broken armrest support and damaged caster wheels"
               afterAlt="Same office chair repaired with a new star base, gas lift and castor wheels"
-              title="300 Chairs: Base, Gas Lift & Wheels"
+              title="Chair Bases, Gas Lifts & Wheels"
               subtitle="Operations Center, DLF Porur Chennai"
             />
             <BeforeAfterSlider
@@ -176,7 +177,7 @@ export default function HomePage() {
               afterSrc="/images/work-4-after.jpg"
               beforeAlt="Mesh office chair with a heavily stained fabric seat"
               afterAlt="Same mesh office chair after deep cleaning"
-              title="280 Mesh Chairs Deep Cleaned"
+              title="Mesh Chairs Deep Cleaned"
               subtitle="Co-Working Hub, Olympia Tech Park Guindy"
             />
           </div>
