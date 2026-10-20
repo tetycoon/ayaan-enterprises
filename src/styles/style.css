@@ -1075,7 +1075,7 @@ html {
 
 /* keep floating chips clear of the slide captions */
 .hero-stage-wrap .chip-3 { bottom: 8%; top: auto; left: -2%; }
-@media (max-width: 640px) { .hero-stage-wrap .chip-3 { left: 0; top: 44%; } }
+@media (max-width: 640px) { .hero-stage-wrap .chip-3 { left: 0; top: 44%; bottom: auto; } }
 
 /* ---------- Office-chair hero showcase (overrides) ---------- */
 .hero-slides {
@@ -1778,6 +1778,8 @@ body.has-cart .footer-bottom { padding-bottom: 150px; }
   .page-hero h1 { font-size: clamp(1.6rem, 6.5vw, 2.2rem); }
   .page-hero .lead { font-size: 0.97rem; margin-bottom: 20px; }
   .page-hero .btn-row { flex-direction: column; gap: 10px; }
+  /* long CTA labels wrap instead of pushing past the screen edge on small phones */
+  .btn { white-space: normal; text-align: center; max-width: 100%; }
   .page-hero .img-slot { max-height: 240px; }
 }
 
@@ -1817,6 +1819,11 @@ body.has-cart .footer-bottom { padding-bottom: 150px; }
   .shop-body h3 { font-size: .95rem; }
   .shop-price { font-size: 1.05rem; }
   .shop-actions .btn { padding: 9px 8px; font-size: .82rem; }
+  /* two-column cards are too narrow for price + button side by side: stack them */
+  .shop-foot { flex-wrap: wrap; gap: 10px; }
+  .shop-foot .shop-price { white-space: nowrap; font-size: .98rem; }
+  .shop-foot .btn-outline,
+  .shop-foot .qty-picker { width: 100%; }
 }
 
 /* ==========================================================
@@ -2158,6 +2165,20 @@ html { -webkit-overflow-scrolling: touch; }
   .mbb-item svg {
     width: 15px;
     height: 15px;
+  }
+}
+
+/* very small phones (320px): let the three buttons share the width without spilling off-screen */
+@media (max-width: 340px) {
+  .mobile-bottom-bar {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.28fr) minmax(0, 1fr);
+    gap: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .mbb-item {
+    font-size: 0.68rem;
+    padding: 9px 3px;
   }
 }
 

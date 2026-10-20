@@ -91,7 +91,6 @@ export default function LogoPreloader() {
           border-radius: 50%;
           background: radial-gradient(circle, rgba(20, 184, 166, 0.22) 0%, transparent 70%);
           filter: blur(40px);
-          animation: preloaderPulse 3s ease-in-out infinite alternate;
           pointer-events: none;
         }
 
@@ -103,13 +102,7 @@ export default function LogoPreloader() {
           background: radial-gradient(circle, rgba(245, 165, 36, 0.18) 0%, transparent 70%);
           filter: blur(50px);
           transform: translate(60px, 40px);
-          animation: preloaderPulse 3s ease-in-out infinite alternate-reverse;
           pointer-events: none;
-        }
-
-        @keyframes preloaderPulse {
-          0% { transform: scale(0.9) translate(-10px, -10px); opacity: 0.7; }
-          100% { transform: scale(1.15) translate(15px, 15px); opacity: 1; }
         }
 
         .preloader-content {
@@ -196,11 +189,29 @@ export default function LogoPreloader() {
           50% { transform: scale(1.04); }
         }
 
+        /* Holds the logo's drop shadow so it stays below the logo instead of orbiting with it */
+        .logo-spin-shadow {
+          display: flex;
+          filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+        }
+
         .logo-img {
           width: 74px;
           height: 74px;
           object-fit: contain;
-          filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+          transform-origin: 50% 50%;
+          /* Slow, steady turn, repeating while the loader is visible */
+          animation: logoSpin 3.5s linear infinite;
+          will-change: transform;
+        }
+
+        @keyframes logoSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .logo-img { animation: none; }
         }
 
         /* Brand Typography */
@@ -283,14 +294,16 @@ export default function LogoPreloader() {
           <div className="logo-aura-ring" aria-hidden="true" />
           <div className="logo-pulse-ring" aria-hidden="true" />
           <div className="logo-circle-badge">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/logo-mark.png"
-              alt="Ayaan Enterprises Logo Mark"
-              className="logo-img"
-              width={74}
-              height={74}
-            />
+            <span className="logo-spin-shadow">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/logo-mark.png"
+                alt="Ayaan Enterprises Logo Mark"
+                className="logo-img"
+                width={74}
+                height={74}
+              />
+            </span>
           </div>
         </div>
 
