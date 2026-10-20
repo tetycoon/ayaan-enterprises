@@ -225,7 +225,7 @@ const scenes = {
   // ---------- before / after ----------
   "work-1-before": [S43, (w, h) => { R = rng("w1"); return office(w, h, { dim: true }) + chair({ x: 600, y: 860, s: 1.55, seat: "#6b6156", back: "#6b6156", dirty: true }); }],
   "work-1-after": [S43, (w, h) => office(w, h) + chair({ x: 600, y: 860, s: 1.55, seat: "#5d6b7a", back: "#5d6b7a" }) + sparkles([[850, 240, 26], [900, 360, 14], [330, 300, 18]])],
-  "work-2-before": [S43, (w, h) => { R = rng("w2"); return office(w, h, { dim: true }) + chair({ x: 600, y: 860, s: 1.5, type: "exec", seat: "#3a342f", back: "#3a342f", frame: "#2a2420", torn: true, dirty: true }); }],
+  "work-2-before": [S43, (w, h) => { R = rng("w2"); return office(w, h, { dim: true }) + chair({ x: 600, y: 860, s: 1.5, type: "exec", seat: "#3a342f", back: "#3a342f", frame: "#2a2420", dirty: true }); }],
   "work-2-after": [S43, (w, h) => office(w, h) + chair({ x: 600, y: 860, s: 1.5, type: "exec", seat: "#1d2127", back: "#1d2127", frame: "#111" }) + sparkles([[860, 220, 26], [910, 340, 14], [330, 280, 18]])],
   "work-3-before": [S43, (w, h) => { R = rng("w3"); return office(w, h, { dim: true, floor: 0.6 }) + chair({ x: 600, y: 880, s: 2.6, seat: "#5b544c", back: "#5b544c", broken: true, dirty: true }); }],
   "work-3-after": [S43, (w, h) => office(w, h, { floor: 0.6 }) + chair({ x: 600, y: 880, s: 2.6, seat: "#1f4a72" }) + sparkles([[260, 700, 26], [960, 640, 18], [880, 780, 12]])],
