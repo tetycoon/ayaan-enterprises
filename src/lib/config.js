@@ -18,8 +18,8 @@ export const SITE = {
   city: "Chennai",
   serviceServing: "Serving Clients All Over Chennai",
   stats: {
-    chairs: "1,000+",
-    companies: "100+",
+    chairs: "10,000+",
+    companies: "400+",
     turnaround: "48 hrs",
     savingsPct: "up to 70%"
   },

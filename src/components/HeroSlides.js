@@ -13,32 +13,32 @@ const SLIDES = [
     className: "scene"
   },
   {
-    src: "/images/hero-ergonomic.jpg",
-    alt: "Black ergonomic office chair with headrest and adjustable arms",
+    src: "/images/hero/ergonomic-black-mesh.png",
+    alt: "Black ergonomic mesh office chair with headrest, lumbar support and adjustable arms",
     title: "Ergonomic chairs, restored",
     desc: "New cushions, gas lift and smooth recline",
-    className: ""
+    className: "light"
   },
   {
-    src: "/images/hero-executive.jpg",
-    alt: "High-back black leatherette executive chair with chrome arms and base",
+    src: "/images/hero/executive-dark-leather.jpg",
+    alt: "High-back dark brown leatherette executive chair with chrome arms and base",
     title: "Executive chairs like new",
     desc: "Leatherette re-covered, chrome polished",
     className: "light"
   },
   {
-    src: "/images/hero-mesh.jpg",
-    alt: "Two mesh-back office chairs with teal seats",
+    src: "/images/hero/mesh-grey-white-arms.jpg",
+    alt: "Grey mesh high-back office chair with headrest, white arms and chrome base",
     title: "Mesh chairs, deep cleaned",
     desc: "Fresh fabric and spotless mesh on every chair",
-    className: ""
+    className: "light"
   },
   {
-    src: "/images/hero-desk.jpg",
-    alt: "Ergonomic office chair at a modern work desk",
+    src: "/images/hero/executive-cream-tan-leather.jpg",
+    alt: "Cream leatherette executive chair with tan side panels, chrome arms and base",
     title: "Back at the desk, ready to work",
     desc: "Fully serviced, tested and delivered",
-    className: ""
+    className: "light"
   },
   {
     src: "/images/furniture/cabin-storage-header.jpg",

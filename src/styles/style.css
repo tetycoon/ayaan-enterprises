@@ -966,6 +966,10 @@ html {
   .note { padding: 14px 16px; font-size: .88rem; }
   .nav-in { min-height: 64px; }
 }
+/* narrow phones: give "10,000+" room inside its stat tile */
+@media (max-width: 400px) {
+  .hero-stats > div { padding-left: 10px; padding-right: 10px; }
+}
 
 /* ==========================================================
    Animated photo hero (home): subtle zoom + crossfade slides,
@@ -1116,7 +1120,7 @@ html {
   mask-composite: intersect;
 }
 .hero-slide-bg { filter: blur(40px) brightness(.8) saturate(1.1); }
-.hero-slide.light { background: #f4f6f8; }
+.hero-slide.light { background: #fff; }
 .hero-slide.light .hero-slide-bg { opacity: 0; }
 
 /* ==========================================================

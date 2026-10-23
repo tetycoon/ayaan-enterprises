@@ -10,10 +10,6 @@
 const P = "/images/products";
 const F = "/images/furniture"; // client-supplied furniture photos
 
-const BOSS_TABLE_PHOTO = {
-  src: `${F}/boss-table-executive-l-desk.jpg`,
-  alt: "Executive L-shaped office table with a wood-grain top, side storage unit and leather chair"
-};
 const CABINET_PHOTO = {
   src: `${F}/office-storage-cabinet.jpg`,
   alt: "Wooden office storage cabinet with open file shelves and closed side cupboards behind an executive desk"
@@ -23,21 +19,6 @@ const ARMCHAIR_PHOTO = {
   alt: "Tan upholstered lounge armchair with slim dark wooden legs"
 };
 const BOSS_TABLE_PHOTOS = [
-  {
-    src: `${F}/boss-table-wood-white-panel.jpg`,
-    alt: "Executive office table with a wood-grain top, white slatted front panel and black leather chair"
-  },
-  {
-    src: `${F}/boss-table-wood-grey-pedestal.jpg`,
-    alt: "Office table with a wood-grain top, dark grey side pedestal and black mesh chair"
-  },
-  {
-    src: `${F}/boss-table-l-shape-dark-panel.jpg`,
-    alt: "Executive L-shaped office table with a wood-grain top, dark front panel, side storage unit and grey leather chair"
-  }
-];
-// Extra boss table styles shown only on the Boss Tables gallery.
-const BOSS_TABLE_EXTRA_PHOTOS = [
   {
     src: `${F}/boss-table-l-shape-white-frame.jpg`,
     alt: "L-shaped office table with a light oak top, white steel loop legs and black mesh high-back chair"
@@ -281,12 +262,12 @@ export const OFFICE_FURNITURE = [
     h1: "Executive Office Tables for Professional Workspaces",
     intro:
       "Create a professional workspace with executive office tables designed for everyday work, meetings, and management offices. Explore office table styles that suit different workspace layouts and business needs. Contact AYAAN ENTERPRISES to discuss your requirements and find a suitable table for your office.",
-    hero: { ...BOSS_TABLE_PHOTO, position: "50% 60%" },
+    hero: { ...BOSS_TABLE_PHOTOS[1], position: "50% 60%" },
     gallery: {
       type: "photos",
       heading: "Boss table styles",
       note: "A few of the executive table styles we can supply. Ask us for photos of more options.",
-      photos: [...BOSS_TABLE_PHOTOS, ...BOSS_TABLE_EXTRA_PHOTOS],
+      photos: BOSS_TABLE_PHOTOS,
       catalogue: true // keep the WhatsApp photo-request card below the gallery
     },
     tips: [
@@ -307,7 +288,11 @@ export const OFFICE_FURNITURE = [
     h1: "Ergonomic Furniture for Comfortable Workspaces",
     intro:
       "Build a more comfortable and practical workspace with ergonomic office furniture. Explore seating and workstation options designed to support comfortable working positions and everyday office use. Contact AYAAN ENTERPRISES to discuss the furniture options suitable for your workplace.",
-    hero: { src: "/images/hero-desk.jpg", alt: "Black ergonomic mesh chair with headrest at a work desk" },
+    hero: {
+      src: `${F}/ergonomic-black-mesh-headrest.webp`,
+      alt: "Black ergonomic mesh office chair with headrest, contoured lumbar back and adjustable arms",
+      contain: true // cut-out product shot: show the whole chair on white
+    },
     gallery: {
       type: "chairs",
       heading: "Ergonomic chair models",
@@ -447,7 +432,11 @@ export const OFFICE_FURNITURE = [
     h1: "Office Seating for Everyday Work and Meetings",
     intro:
       "Explore office seating options for workstations, executive cabins, meeting rooms, and visitor areas. Choose styles that suit the intended use and design of your workspace. Contact AYAAN ENTERPRISES to discuss your seating requirements and available options.",
-    hero: { src: "/images/hero-mesh.jpg", alt: "Two mesh-back office chairs with teal seats" },
+    hero: {
+      src: `${F}/seating-black-mesh-headrest.webp`,
+      alt: "Black ergonomic mesh office chair with headrest, lumbar support and adjustable arms",
+      contain: true // cut-out product shot: show the whole chair on white
+    },
     gallery: {
       type: "chairs",
       heading: "Office chairs by type",
