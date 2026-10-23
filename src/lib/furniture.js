@@ -10,10 +10,6 @@
 const P = "/images/products";
 const F = "/images/furniture"; // client-supplied furniture photos
 
-const CABINET_PHOTO = {
-  src: `${F}/office-storage-cabinet.jpg`,
-  alt: "Wooden office storage cabinet with open file shelves and closed side cupboards behind an executive desk"
-};
 const ARMCHAIR_PHOTO = {
   src: `${F}/lounge-armchair-tan.jpg`,
   alt: "Tan upholstered lounge armchair with slim dark wooden legs"
@@ -46,20 +42,22 @@ const CONFERENCE_TABLE_PHOTOS = [
     alt: "Maple-finish conference table with rounded corners, white steel legs and cable management ports"
   }
 ];
-const WALL_SHELVING_PHOTO = {
-  src: `${F}/office-wall-shelving-desk.jpg`,
-  alt: "Wooden wall shelving unit with open shelves for books and files above a matching desk"
-};
-const STORAGE_PHOTOS = [
+// Upright cabinet photos, shown whole (contain) so the tall units aren't cropped.
+const CABINET_PHOTOS = [
   {
-    src: `${F}/office-desk-hutch-shelving.jpg`,
-    alt: "Wooden desk with a pedestal of drawers and an open shelving hutch holding files and books",
-    position: "50% 40%"
+    src: `${F}/cabinet-steel-locker-15-door-blue.jpg`,
+    alt: "Steel staff locker with fifteen lockable blue doors in a white frame",
+    contain: true
   },
   {
-    src: `${F}/office-bookshelf-wall-corner-desk.jpg`,
-    alt: "Floor-to-ceiling wooden bookshelf wall with a built-in corner desk and drawers",
-    position: "50% 45%"
+    src: `${F}/cabinet-steel-glass-doors.jpg`,
+    alt: "Grey steel storage cabinet with two lockable glass doors and adjustable shelves",
+    contain: true
+  },
+  {
+    src: `${F}/cabinet-wooden-cupboards-set.jpg`,
+    alt: "Set of four light wood two-door office cupboards in graded heights",
+    contain: true
   }
 ];
 
@@ -276,7 +274,7 @@ export const OFFICE_FURNITURE = [
       "Whether you would like matching storage or side units",
       "How many tables you need and your timeline"
     ],
-    related: ["cabin-furniture", "conference-tables", "office-cabinets"]
+    related: ["conference-tables", "office-cabinets", "office-workstations"]
   },
   {
     slug: "ergonomics",
@@ -309,40 +307,6 @@ export const OFFICE_FURNITURE = [
     related: ["office-seating", "office-workstations", "boss-tables"]
   },
   {
-    slug: "cabin-furniture",
-    label: "Cabin Furniture",
-    blurb: "Tables, storage and coordinated pieces for executive cabins.",
-    title: "Executive Cabin Furniture for Offices | Ayaan Enterprises",
-    description:
-      "Executive cabin furniture for management offices, including tables, storage and complementary pieces. Contact Ayaan Enterprises in Chennai to plan your cabin furniture.",
-    h1: "Executive Cabin Furniture for Modern Offices",
-    intro:
-      "Create a professional executive cabin with office furniture that brings together function, organisation, and a consistent design. Explore executive tables, storage furniture, and complementary pieces for management offices. Contact AYAAN ENTERPRISES to discuss your cabin furniture requirements.",
-    hero: {
-      src: `${F}/cabin-tall-wooden-cupboard.jpg`,
-      alt: "Tall single-door wooden office cupboard with adjustable shelves, door open",
-      contain: true // tall cut-out product shot: show it whole on white
-    },
-    gallery: {
-      type: "photos",
-      heading: "Cabin furniture pieces",
-      note: "A few of the pieces we can supply for executive cabins. Ask us for photos of more options.",
-      photos: [
-        // Upright cabinet photos shown whole (contain) so the tall units aren't cropped.
-        { src: `${F}/cabin-steel-locker-15-door-blue.jpg`, alt: "Steel staff locker with fifteen lockable blue doors in a white frame", contain: true },
-        { src: `${F}/cabin-steel-cabinet-glass-doors.jpg`, alt: "Grey steel storage cabinet with two lockable glass doors and adjustable shelves", contain: true },
-        { src: `${F}/cabin-wooden-cupboards-set.jpg`, alt: "Set of four light wood two-door office cupboards in graded heights", contain: true }
-      ]
-    },
-    tips: [
-      "Cabin dimensions, and where the door and windows are",
-      "The pieces you need, such as a table, storage, a side unit or seating",
-      "Your preferred finish and colour scheme",
-      "How many cabins you are furnishing"
-    ],
-    related: ["boss-tables", "office-cabinets", "office-seating"]
-  },
-  {
     slug: "conference-tables",
     label: "Conference Tables",
     blurb: "Tables for meeting rooms, boardrooms and team spaces.",
@@ -365,7 +329,7 @@ export const OFFICE_FURNITURE = [
       "Your preferred table shape and finish",
       "Whether you also need conference chairs"
     ],
-    related: ["office-seating", "boss-tables", "cabin-furniture"]
+    related: ["office-seating", "boss-tables", "office-workstations"]
   },
   {
     slug: "office-workstations",
@@ -406,12 +370,12 @@ export const OFFICE_FURNITURE = [
     h1: "Office Cabinets and Storage Furniture",
     intro:
       "Keep your workspace organised with office cabinets and storage furniture for documents, office supplies, and everyday business items. Explore storage styles that suit your office layout and organisational needs. Contact AYAAN ENTERPRISES to enquire about suitable storage furniture for your workplace.",
-    hero: { ...CABINET_PHOTO, position: "50% 50%" },
+    hero: { ...CABINET_PHOTOS[0] },
     gallery: {
       type: "photos",
       heading: "Storage furniture",
       note: "A few examples of the storage we can supply. Ask us for photos of more options.",
-      photos: [{ ...WALL_SHELVING_PHOTO, position: "50% 25%" }, ...STORAGE_PHOTOS],
+      photos: CABINET_PHOTOS,
       catalogue: true // keep the WhatsApp photo-request card below the gallery
     },
     tips: [
@@ -420,7 +384,7 @@ export const OFFICE_FURNITURE = [
       "How many storage units you need",
       "Whether you prefer lockable or open storage"
     ],
-    related: ["cabin-furniture", "office-workstations", "boss-tables"]
+    related: ["office-workstations", "boss-tables", "conference-tables"]
   },
   {
     slug: "office-seating",
@@ -450,7 +414,7 @@ export const OFFICE_FURNITURE = [
       "Your preferred style, colour and upholstery",
       "Your delivery timeline"
     ],
-    related: ["ergonomics", "conference-tables", "cabin-furniture"]
+    related: ["ergonomics", "conference-tables", "boss-tables"]
   }
 ];
 

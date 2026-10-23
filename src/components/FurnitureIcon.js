@@ -18,15 +18,6 @@ const PATHS = {
       <path d="M12 22v8M36 22v8" />
     </>
   ),
-  "cabin-furniture": (
-    <>
-      <rect x="28" y="6" width="14" height="22" rx="1.5" />
-      <path d="M35 6v22" />
-      <path d="M4 28h30" />
-      <path d="M7 28v14M31 28v14" />
-      <rect x="10" y="20" width="10" height="8" rx="1" />
-    </>
-  ),
   "conference-tables": (
     <>
       <ellipse cx="24" cy="24" rx="13" ry="7" />
