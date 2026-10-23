@@ -63,12 +63,13 @@ export const CATALOGUE = [
     features: ["Plush fabric seats", "Armrests with cup holder", "Fixed row installation"]
   },
   {
-    id: "wood",
-    name: "Solid Wood Chair",
-    cat: "Wooden",
-    img: "/images/chair-wooden.jpg",
+    id: "pantry",
+    name: "Pantry Chair",
+    cat: "Pantry",
+    img: "/images/chair-pantry.jpg",
+    white: true,
     price: null,
-    features: ["Solid hardwood", "Cafeteria & reception", "Durable polish finish"]
+    features: ["Moulded shell with padded seat", "Office pantry & staff dining", "Sturdy powder-coated steel legs"]
   }
 ];
 

@@ -14,7 +14,7 @@ export const SITE = {
     lng: 80.2166465,
     listing: "Innodesk Chennai"
   },
-  hours: "Mon - Sat: 8:30 AM - 7:30 PM",
+  hours: "Mon - Sat: 10:00 AM - 7:00 PM",
   city: "Chennai",
   serviceServing: "Serving Clients All Over Chennai",
   stats: {

@@ -212,10 +212,13 @@ export const CHAIRS = [
     images: [ARMCHAIR_PHOTO]
   },
   {
-    id: "wooden-chair",
+    id: "pantry-chair",
     seating: "visitor",
-    name: "Wooden Chair · Cafeteria & Breakout",
-    images: [{ src: "/images/chair-wooden.jpg", alt: "Solid wood chair with a slatted back" }]
+    name: "Pantry Chair · Office Pantry & Staff Dining",
+    images: [
+      { src: "/images/chair-pantry.jpg", alt: "Grey moulded shell pantry chair with a padded seat and black steel legs" },
+      { src: "/images/chair-pantry-stool.jpg", alt: "Grey high pantry stool with a spindle back, padded seat and footrest" }
+    ]
   },
   {
     id: "auditorium",
@@ -305,7 +308,7 @@ export const OFFICE_FURNITURE = [
     h1: "Executive Cabin Furniture for Modern Offices",
     intro:
       "Create a professional executive cabin with office furniture that brings together function, organisation, and a consistent design. Explore executive tables, storage furniture, and complementary pieces for management offices. Contact AYAAN ENTERPRISES to discuss your cabin furniture requirements.",
-    hero: { ...ARMCHAIR_PHOTO, contain: true },
+    hero: { ...ARMCHAIR_PHOTO },
     gallery: {
       type: "photos",
       heading: "Cabin furniture pieces",
@@ -313,7 +316,7 @@ export const OFFICE_FURNITURE = [
       photos: [
         BOSS_TABLE_PHOTO,
         { ...CABINET_PHOTO, position: "50% 55%" },
-        { ...ARMCHAIR_PHOTO, contain: true },
+        { ...ARMCHAIR_PHOTO },
         ...BOSS_TABLE_PHOTOS
       ]
     },

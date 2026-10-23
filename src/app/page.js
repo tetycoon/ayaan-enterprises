@@ -5,6 +5,8 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import ChairGalleryMarquee from "@/components/ChairGalleryMarquee";
 import GoogleReviews from "@/components/GoogleReviews";
 import Photo, { SIZES } from "@/components/Photo";
+import PhotoGallery from "@/components/PhotoGallery";
+import { JOB_PHOTOS } from "@/lib/work";
 
 export const metadata = {
   title: "Bulk Office Chair Repair & Deep Cleaning in Chennai | Ayaan Enterprises",
@@ -205,6 +207,23 @@ export default function HomePage() {
           <div className="text-center" style={{ marginTop: "36px", textAlign: "center" }}>
             <Link className="btn btn-outline" href="/our-work">
               View All Completed Projects &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== OUR COMPLETED PROJECTS ===== */}
+      <section className="section" aria-labelledby="completed-projects-heading">
+        <div className="container">
+          <div className="section-head center" style={{ maxWidth: "680px", margin: "0 auto 36px" }}>
+            <span className="eyebrow">On-Site Job Photos</span>
+            <h2 id="completed-projects-heading">Our Completed Projects</h2>
+            <p>Real photos taken by our team at client sites: chairs serviced and ready for handover, and repairs in progress.</p>
+          </div>
+          <PhotoGallery photos={JOB_PHOTOS} title="Our Completed Projects" portrait />
+          <div style={{ marginTop: "32px", textAlign: "center" }}>
+            <Link className="btn btn-outline" href="/our-work">
+              See More of Our Work &rarr;
             </Link>
           </div>
         </div>

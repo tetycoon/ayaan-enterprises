@@ -36,7 +36,8 @@ Each was downloaded and cropped to its slot size. To view or replace one, open `
 | hero-executive.jpg | High-back leatherette executive chair (white background) | Home hero, Home/Products cards, Seating |
 | chairs-waiting.jpg | Steel beam waiting-area seating | Home/Products visitor card, Bulk (hospitals) |
 | chairs-auditorium.jpg | Red auditorium seating | Bulk (schools & colleges) |
-| chair-wooden.jpg | Solid wood chair | Seating |
+| chair-pantry.jpg | Grey shell pantry chair with black steel legs, background removed onto white (replaced the solid wood chair) | Home gallery, Shop, Office Seating |
+| chair-pantry-stool.jpg | Grey high pantry stool | Office Seating (pantry chair gallery) |
 
 Home hero also uses Pexels **12269763** (hero-mesh.jpg, mesh chairs) and **31236091** (hero-desk.jpg, ergonomic chair at desk).
 ## Bulk / Corporate page (Pexels)
@@ -79,3 +80,9 @@ Home hero also uses Pexels **12269763** (hero-mesh.jpg, mesh chairs) and **31236
 | work-6-after.jpg | 8459996 | Bright waiting room with blue upholstered chairs |
 
 | cleaning-extraction.jpg | 5233285 | Hot-water extraction nozzle cleaning a fabric seat (Chair Cleaning page) |
+
+## Brand-colour edits
+
+The technicians' navy shirts in hero-carpenter, page-bulk, page-cleaning, page-repair, repair-onsite, service-bulk,
+service-cleaning and service-repair were recoloured to brand maroon (#800000). Faces, poses and backgrounds are unchanged.
+work/chair-bases-before.png: the AI-generator sparkle mark in the bottom-right corner was removed.

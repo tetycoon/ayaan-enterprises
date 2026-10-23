@@ -2,31 +2,13 @@ import Link from "next/link";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import PhotoGallery from "@/components/PhotoGallery";
 import Photo, { SIZES } from "@/components/Photo";
+import { JOB_PHOTOS } from "@/lib/work";
 
 export const metadata = {
   title: "Corporate Seating Audit Case Studies & Transformations | Ayaan Enterprises",
   description:
     "Review before and after transformations across corporate tech parks, BFSI campuses, and managed co-working hubs. Verified zero-downtime execution and 90-day parts warranty."
 };
-
-// Real photos taken by the Ayaan Enterprises team on jobs.
-const JOB_PHOTOS = [
-  {
-    src: "/images/work/job-serviced-mesh-chairs.jpg",
-    alt: "Six black mesh office chairs lined up in a client office after servicing",
-    position: "50% 62%"
-  },
-  {
-    src: "/images/work/job-fitting-star-base.jpg",
-    alt: "Ayaan Enterprises technician fitting a star base and castors to an office chair",
-    position: "50% 60%"
-  },
-  {
-    src: "/images/work/job-fitting-gas-lift.jpg",
-    alt: "Technician fitting a new gas lift to an office chair seat mechanism",
-    position: "50% 60%"
-  }
-];
 
 const PROJECTS = [
   {

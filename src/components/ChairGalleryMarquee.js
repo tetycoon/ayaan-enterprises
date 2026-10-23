@@ -67,10 +67,11 @@ const CHAIR_TYPES = [
     tag: "Ergonomic"
   },
   {
-    name: "Cafeteria & Breakout",
+    name: "Pantry & Staff Dining",
     cat: "Dining & Pantry",
-    image: "/images/chair-wooden.jpg",
-    specs: "Solid Hardwood Frame · Scratch-Resistant",
+    image: "/images/chair-pantry.jpg",
+    contain: true,
+    specs: "Moulded Shell · Padded Seat · Steel Legs",
     tag: "Breakout"
   }
 ];

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { waLink } from "@/lib/config";
 import { getStoredCart, saveStoredCart, getCartSummary, CATALOGUE } from "@/lib/cart";
 
-const CATEGORIES = ["All", "Ergonomic", "Executive", "Mesh", "Visitor & waiting", "Auditorium", "Wooden"];
+const CATEGORIES = ["All", "Ergonomic", "Executive", "Mesh", "Visitor & waiting", "Auditorium", "Pantry"];
 
 export default function ShopPage() {
   const [filter, setFilter] = useState("All");
