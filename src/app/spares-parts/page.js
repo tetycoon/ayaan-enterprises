@@ -10,13 +10,14 @@ export const metadata = {
 
 const ENQUIRY_HREF = `/quote?service=${encodeURIComponent("Chair Repair & Spares")}`;
 
-// Part types already named on the site's products page; illustrations from the existing assets.
+// Part types already named on the site's products page. `photo` parts are white-background
+// product shots, shown whole (contain) so nothing is cropped.
 const PARTS = [
-  { name: "Gas Lifts / Cylinders", img: "/images/part-gas-lift.svg", alt: "Illustration of two office chair gas lift cylinders" },
-  { name: "Wheels & Castors", img: "/images/part-wheels.svg", alt: "Illustration of office chair castor wheels" },
-  { name: "Star Bases", img: "/images/part-base.svg", alt: "Illustration of a five-star office chair base" },
-  { name: "Tilt Mechanisms", img: "/images/part-mechanism.svg", alt: "Illustration of an office chair tilt mechanism" },
-  { name: "Armrests", img: "/images/part-armrest.svg", alt: "Illustration of a pair of office chair armrests" }
+  { name: "Gas Lifts / Cylinders", img: "/images/parts/gas-lift.jpg", alt: "Black office chair gas lift cylinder with chrome piston", photo: true },
+  { name: "Wheels & Castors", img: "/images/parts/wheels-castors.jpg", alt: "Set of five black twin-wheel office chair castors with metal stems", photo: true },
+  { name: "Star Bases", img: "/images/parts/star-base.jpg", alt: "Chrome five-star office chair base with black castor wheels", photo: true },
+  { name: "Tilt Mechanisms", img: "/images/parts/tilt-mechanism.jpg", alt: "Black office chair tilt mechanism with height adjustment lever", photo: true },
+  { name: "Armrests", img: "/images/parts/armrests.jpg", alt: "Pair of black height-adjustable office chair armrests", photo: true }
 ];
 
 export default function SparesPartsPage() {
@@ -64,7 +65,7 @@ export default function SparesPartsPage() {
           <div className="spares-grid">
             {PARTS.map((p) => (
               <article key={p.name} className="card service-card">
-                <figure className="img-slot ratio-4x3">
+                <figure className={`img-slot ratio-4x3${p.photo ? " contain" : ""}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={p.img} alt={p.alt} loading="lazy" />
                 </figure>

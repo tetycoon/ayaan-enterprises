@@ -39,6 +39,13 @@ const SLIDES = [
     title: "Back at the desk, ready to work",
     desc: "Fully serviced, tested and delivered",
     className: ""
+  },
+  {
+    src: "/images/furniture/cabin-storage-header.jpg",
+    alt: "Open light wood cabin cabinet with shelves and a hinged door",
+    title: "Cabin furniture, built to store",
+    desc: "Wooden storage cabinets for your workplace",
+    className: "scene"
   }
 ];
 

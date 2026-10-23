@@ -3,9 +3,9 @@ export const SITE = {
   name: "Ayaan Enterprises",
   tagline: "Bulk Office Chair Repair, Deep Cleaning & Refurbishment in Chennai",
   logo: "/images/logo-2026.png",
-  phone: "+91 81222 33887",
-  phoneLink: "+918122233887",
-  whatsapp: "918122233887",
+  phone: "+91 97907 33887",
+  phoneLink: "+919790733887",
+  whatsapp: "919790733887",
   email: "info@ayaanenterprises.com",
   address: "2nd Floor, ANANDHAM ELITE, 1, MRTS Road, 1st Street, Velachery, Chennai, Tamil Nadu 600042, India.",
   // Footer map: the Google Maps listing for this building is "Innodesk Chennai" (same company).
@@ -18,8 +18,8 @@ export const SITE = {
   city: "Chennai",
   serviceServing: "Serving Clients All Over Chennai",
   stats: {
-    chairs: "35,000+",
-    companies: "420+",
+    chairs: "1,000+",
+    companies: "100+",
     turnaround: "48 hrs",
     savingsPct: "up to 70%"
   },

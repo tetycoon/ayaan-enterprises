@@ -36,10 +36,35 @@ const BOSS_TABLE_PHOTOS = [
     alt: "Executive L-shaped office table with a wood-grain top, dark front panel, side storage unit and grey leather chair"
   }
 ];
-const CONFERENCE_TABLE_PHOTO = {
-  src: `${F}/conference-table-wood-black.jpg`,
-  alt: "Long conference table with a wood-grain top, black centre panel and black meeting chairs"
-};
+// Extra boss table styles shown only on the Boss Tables gallery.
+const BOSS_TABLE_EXTRA_PHOTOS = [
+  {
+    src: `${F}/boss-table-l-shape-white-frame.jpg`,
+    alt: "L-shaped office table with a light oak top, white steel loop legs and black mesh high-back chair"
+  },
+  {
+    src: `${F}/boss-table-teak-black-panel.jpg`,
+    alt: "Executive office table with a teak-finish top, black slotted modesty panel and black leather chair"
+  },
+  {
+    src: `${F}/boss-table-walnut-open-pedestal.jpg`,
+    alt: "L-shaped office table with a walnut-finish top, dark grey open shelf pedestal and grey mesh chair"
+  }
+];
+const CONFERENCE_TABLE_PHOTOS = [
+  {
+    src: `${F}/conference-boardroom-grey-mesh.jpg`,
+    alt: "Boardroom with a long U-shaped wood-finish conference table, cable ports and grey mesh chairs"
+  },
+  {
+    src: `${F}/conference-table-meeting-room-screen.jpg`,
+    alt: "Meeting room with a light wood conference table, black cantilever chairs and a wall-mounted screen"
+  },
+  {
+    src: `${F}/conference-table-maple-white-legs.jpg`,
+    alt: "Maple-finish conference table with rounded corners, white steel legs and cable management ports"
+  }
+];
 const WALL_SHELVING_PHOTO = {
   src: `${F}/office-wall-shelving-desk.jpg`,
   alt: "Wooden wall shelving unit with open shelves for books and files above a matching desk"
@@ -261,7 +286,7 @@ export const OFFICE_FURNITURE = [
       type: "photos",
       heading: "Boss table styles",
       note: "A few of the executive table styles we can supply. Ask us for photos of more options.",
-      photos: BOSS_TABLE_PHOTOS,
+      photos: [...BOSS_TABLE_PHOTOS, ...BOSS_TABLE_EXTRA_PHOTOS],
       catalogue: true // keep the WhatsApp photo-request card below the gallery
     },
     tips: [
@@ -308,16 +333,20 @@ export const OFFICE_FURNITURE = [
     h1: "Executive Cabin Furniture for Modern Offices",
     intro:
       "Create a professional executive cabin with office furniture that brings together function, organisation, and a consistent design. Explore executive tables, storage furniture, and complementary pieces for management offices. Contact AYAAN ENTERPRISES to discuss your cabin furniture requirements.",
-    hero: { ...ARMCHAIR_PHOTO },
+    hero: {
+      src: `${F}/cabin-tall-wooden-cupboard.jpg`,
+      alt: "Tall single-door wooden office cupboard with adjustable shelves, door open",
+      contain: true // tall cut-out product shot: show it whole on white
+    },
     gallery: {
       type: "photos",
       heading: "Cabin furniture pieces",
       note: "A few of the pieces we can supply for executive cabins. Ask us for photos of more options.",
       photos: [
-        BOSS_TABLE_PHOTO,
-        { ...CABINET_PHOTO, position: "50% 55%" },
-        { ...ARMCHAIR_PHOTO },
-        ...BOSS_TABLE_PHOTOS
+        // Upright cabinet photos shown whole (contain) so the tall units aren't cropped.
+        { src: `${F}/cabin-steel-locker-15-door-blue.jpg`, alt: "Steel staff locker with fifteen lockable blue doors in a white frame", contain: true },
+        { src: `${F}/cabin-steel-cabinet-glass-doors.jpg`, alt: "Grey steel storage cabinet with two lockable glass doors and adjustable shelves", contain: true },
+        { src: `${F}/cabin-wooden-cupboards-set.jpg`, alt: "Set of four light wood two-door office cupboards in graded heights", contain: true }
       ]
     },
     tips: [
@@ -338,16 +367,12 @@ export const OFFICE_FURNITURE = [
     h1: "Conference Tables for Meetings and Team Discussions",
     intro:
       "Create a well-organised meeting space with conference tables suited to your office layout and team requirements. Explore furniture options for meeting rooms, boardrooms, and collaborative workspaces. Contact AYAAN ENTERPRISES to discuss suitable table styles and configurations for your office.",
-    hero: { src: "/images/bulk-report.jpg", alt: "Meeting room with a white conference table and brown leather chairs" },
+    hero: { ...CONFERENCE_TABLE_PHOTOS[0] },
     gallery: {
       type: "photos",
       heading: "Meeting room settings",
       note: "Example meeting room photos. Ask us for photos of the conference tables currently available.",
-      photos: [
-        CONFERENCE_TABLE_PHOTO,
-        { src: "/images/industry-government.jpg", alt: "Boardroom with a long meeting table and high-back leather chairs", zoom: 1.2 },
-        { src: "/images/seating-comfort.jpg", alt: "Meeting table with black high-back chairs and a conference phone" }
-      ]
+      photos: CONFERENCE_TABLE_PHOTOS
     },
     tips: [
       "The dimensions of the meeting room",
@@ -373,9 +398,9 @@ export const OFFICE_FURNITURE = [
       heading: "Workstation layouts",
       note: "Example workstation photos. Ask us for photos of the workstation options currently available.",
       photos: [
-        { src: "/images/industry-coworking.jpg", alt: "Shared desks with monitors and mesh chairs in a co-working space", zoom: 1.2 },
-        { src: "/images/industry-callcentre.jpg", alt: "Rows of workstations separated by partitions in an open-plan office", zoom: 1.2 },
-        { src: "/images/prod-mesh.jpg", alt: "Single workstation with a partition, monitor and mesh chair" }
+        { src: `${F}/workstation-blue-partition-cubicles.jpg`, alt: "Rows of partitioned office workstations with blue and light wood panels and black chairs" },
+        { src: `${F}/workstation-linear-bench-open-plan.jpg`, alt: "Long linear bench workstations with white desk screens and new mesh chairs in an open-plan office" },
+        { src: `${F}/workstation-shared-desk-glass-screens.jpg`, alt: "Shared four-seat workstation desk with frosted glass screens and grey steel legs" }
       ]
     },
     tips: [

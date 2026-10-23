@@ -154,7 +154,7 @@ export function getSampleEnterpriseData() {
     settings: {
       businessName: SITE.name || "Ayaan Enterprises",
       address: SITE.address || "2nd Floor, ANANDHAM ELITE, 1, MRTS Road, 1st Street, Velachery, Chennai, Tamil Nadu 600042, India.",
-      phone: SITE.phone || "+91 81222 33887",
+      phone: SITE.phone || "+91 97907 33887",
       gstin: "33AABCA1234F1Z9",
       bank: "Bank: HDFC Bank\nA/c No: 50200081223388\nIFSC: HDFC0001234\nBranch: Guindy Industrial Estate, Chennai",
       gstPct: 18,

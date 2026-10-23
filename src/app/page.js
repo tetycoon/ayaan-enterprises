@@ -55,11 +55,11 @@ export default function HomePage() {
             </div>
             <div className="hero-stats">
               <div>
-                <strong>35,000+</strong>
+                <strong>1,000+</strong>
                 <span>Chairs Serviced</span>
               </div>
               <div>
-                <strong>420+</strong>
+                <strong>100+</strong>
                 <span>Companies Served</span>
               </div>
               <div>

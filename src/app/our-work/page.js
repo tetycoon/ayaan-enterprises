@@ -75,7 +75,7 @@ export default function OurWorkPage() {
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-3xl font-black text-amber-400">35,000+</div>
+              <div className="text-3xl font-black text-amber-400">1,000+</div>
               <div className="text-xs text-slate-400 uppercase tracking-wider mt-1">Chairs Restored to Date</div>
             </div>
             <div>
