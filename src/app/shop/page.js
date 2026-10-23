@@ -86,17 +86,17 @@ export default function ShopPage() {
             </ul>
           </div>
           <div className="shop-collage" aria-hidden="true">
-            <figure className="shop-tile t1">
+            <figure className="shop-tile t1 white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/hero-ergonomic.jpg" alt="" />
+              <img src="/images/hero/mesh-grey-white-arms.jpg" alt="" />
             </figure>
             <figure className="shop-tile t2 white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/hero-executive.jpg" alt="" />
+              <img src="/images/hero/executive-cream-tan-leather.jpg" alt="" />
             </figure>
             <figure className="shop-tile t3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/hero-mesh.jpg" alt="" />
+              <img src="/images/products/cafe-chair-grey-shell-black-legs.jpg" alt="" />
             </figure>
           </div>
         </div>
