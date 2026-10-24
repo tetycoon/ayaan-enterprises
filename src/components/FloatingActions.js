@@ -20,7 +20,7 @@ export default function FloatingActions({ onOpenCallback }) {
         </svg>
         <span>WhatsApp</span>
       </a>
-      <a className="fab-btn fab-call" href={`tel:${SITE.phoneLink}`} aria-label="Call us">
+      <a className="fab-btn fab-call" href={`tel:${SITE.phone2Link}`} aria-label="Call us">
         <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
           <path
             fill="currentColor"

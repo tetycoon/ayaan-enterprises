@@ -10,8 +10,8 @@ export default function MobileBottomBar() {
       {/* Call Now */}
       <a
         className="mbb-item mbb-call"
-        href={`tel:${SITE.phoneLink}`}
-        aria-label={`Call ${SITE.phone}`}
+        href={`tel:${SITE.phone2Link}`}
+        aria-label={`Call ${SITE.phone2}`}
       >
         <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
           <path
