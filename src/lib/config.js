@@ -5,6 +5,8 @@ export const SITE = {
   logo: "/images/logo-2026.png",
   phone: "+91 97907 33887",
   phoneLink: "+919790733887",
+  phone2: "+91 81222 33887",
+  phone2Link: "+918122233887",
   whatsapp: "918122233887",
   whatsappDisplay: "+91 81222 33887",
   email: "info@ayaanenterprises.com",

@@ -171,15 +171,11 @@ export default function Header() {
               </svg>
               WhatsApp {SITE.whatsappDisplay}
             </a>
-            <a href={`tel:${SITE.phoneLink}`}>
-              <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16">
-                <path
-                  fill="currentColor"
-                  d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.3 1Z"
-                />
-              </svg>
-              Call {SITE.phone}
-            </a>
+            <span className="topbar-nums">
+              <a href={`tel:${SITE.phoneLink}`}>Call: {SITE.phone}</a>
+              <span aria-hidden="true">/</span>
+              <a href={`tel:${SITE.phone2Link}`}>{SITE.phone2}</a>
+            </span>
             <Link href="/admin" className="text-xs text-slate-400 hover:text-white ml-2">
               Staff Login &rarr;
             </Link>

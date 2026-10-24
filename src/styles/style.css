@@ -1341,6 +1341,16 @@ body.has-cart .footer-bottom { padding-bottom: 150px; }
 .topbar-links .topbar-wa:hover { background: #1fb457; }
 @media (max-width: 640px) { .topbar a:last-child { display: inline-flex; } .topbar-links { gap: 8px; } .topbar-links a:not(.topbar-wa) { display: none; } }
 
+/* Header call numbers */
+.topbar-nums { display: inline-flex; align-items: center; gap: 0; color: #6b8299; }
+.topbar-links .topbar-nums a { display: inline-flex; color: #d6e1ec; white-space: nowrap; }
+.topbar-links .topbar-nums a:hover { color: #fff; }
+@media (max-width: 640px) {
+  .topbar-links { flex-wrap: wrap; justify-content: center; row-gap: 4px; }
+  .topbar-in { justify-content: center; }
+  .topbar-nums { flex-basis: 100%; justify-content: center; }
+}
+
 /* Logo styling - header clean transparent, footer covered with white rectangle background */
 .brand-logo {
   display: block;
