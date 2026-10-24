@@ -92,7 +92,7 @@ export default function Footer({ onOpenCallback }) {
           <h3>Contact Us</h3>
           <a href={`tel:${SITE.phoneLink}`}>Call: {SITE.phone}</a>
           <a target="_blank" rel="noopener noreferrer" href={waLink()}>
-            WhatsApp: {SITE.phone}
+            WhatsApp: {SITE.whatsappDisplay}
           </a>
           <p>{SITE.address}</p>
           <p>{SITE.hours}</p>

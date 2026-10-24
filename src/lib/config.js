@@ -5,7 +5,8 @@ export const SITE = {
   logo: "/images/logo-2026.png",
   phone: "+91 97907 33887",
   phoneLink: "+919790733887",
-  whatsapp: "919790733887",
+  whatsapp: "918122233887",
+  whatsappDisplay: "+91 81222 33887",
   email: "info@ayaanenterprises.com",
   address: "2nd Floor, ANANDHAM ELITE, 1, MRTS Road, 1st Street, Velachery, Chennai, Tamil Nadu 600042, India.",
   // Footer map: the Google Maps listing for this building is "Innodesk Chennai" (same company).
