@@ -90,7 +90,9 @@ export default function Footer({ onOpenCallback }) {
         </div>
         <div>
           <h3>Contact Us</h3>
-          <a href={`tel:${SITE.phoneLink}`}>Call: {SITE.phone}</a>
+          <div className="footer-call">
+            <a href={`tel:${SITE.phoneLink}`}>Call: {SITE.phone}</a>/<a href={`tel:${SITE.phone2Link}`}>{SITE.phone2}</a>
+          </div>
           <a target="_blank" rel="noopener noreferrer" href={waLink()}>
             WhatsApp: {SITE.whatsappDisplay}
           </a>

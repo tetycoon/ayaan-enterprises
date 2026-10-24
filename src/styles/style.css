@@ -818,6 +818,9 @@ legend { font-weight: 700; font-size: .92rem; color: var(--navy); margin-bottom:
   text-decoration: none;
 }
 .footer-grid p { margin: 0 0 9px; overflow-wrap: break-word; }
+.footer-grid .footer-call { margin-bottom: 9px; color: #b9cadb; }
+.footer-grid .footer-call a { display: inline-block; margin-bottom: 0; white-space: nowrap; }
+.footer-grid .footer-call a:hover, .footer-grid .footer-call a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
 .footer-grid > :first-child p { max-width: 34ch; }
 .footer-brand { display: block; color: #fff; font-size: 1.3rem; font-weight: 900; margin-bottom: 10px; }
 .footer-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; padding-bottom: 90px; font-size: .84rem; }
@@ -1345,6 +1348,7 @@ body.has-cart .footer-bottom { padding-bottom: 150px; }
 .topbar-nums { display: inline-flex; align-items: center; gap: 0; color: #6b8299; }
 .topbar-links .topbar-nums a { display: inline-flex; color: #d6e1ec; white-space: nowrap; }
 .topbar-links .topbar-nums a:hover { color: #fff; }
+.topbar-links .topbar-nums a:hover, .topbar-links .topbar-nums a:focus-visible { text-decoration: underline !important; text-underline-offset: 3px; }
 @media (max-width: 640px) {
   .topbar-links { flex-wrap: wrap; justify-content: center; row-gap: 4px; }
   .topbar-in { justify-content: center; }
