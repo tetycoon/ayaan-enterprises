@@ -576,7 +576,7 @@ export default function QuotePage() {
               <li>⚡ <strong>4-Hr</strong> Response Time</li>
               <li>🏢 <strong>On-Site</strong> Inspection &amp; Fix</li>
               <li>🛡️ <strong>90-Day</strong> Parts Warranty</li>
-              <li>📞 Direct Call: <a href={`tel:${SITE.phoneLink}`} style={{ color: "var(--teal-light)", fontWeight: 700 }}>{SITE.phone}</a></li>
+              <li>📞 Direct Call: <a href={`tel:${SITE.phone2Link}`} style={{ color: "var(--teal-light)", fontWeight: 700 }}>{SITE.phone2}</a></li>
             </ul>
           </div>
 

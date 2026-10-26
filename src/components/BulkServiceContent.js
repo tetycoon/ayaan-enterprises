@@ -22,7 +22,6 @@ const JOB_PHOTOS = [
 const STEPS = [
   { icon: "📋", title: "Site Survey & Tagging", text: "Every chair is counted, tagged, and its exact condition recorded with required repairs." },
   { icon: "📑", title: "Itemised Quote", text: "Per-chair pricing grouped by chair type and specific service needed. No hidden charges." },
-  { icon: "🪑", title: "Sample Chair Trial", text: "We refurbish 1–2 test chairs first so your facilities team can inspect quality before full rollout." },
   { icon: "⚙️", title: "Batch Servicing", text: "Work is completed on-site during weekends or off-hours in controlled batches." },
   { icon: "✅", title: "Handover & GST Invoice", text: "Final quality check, before & after photo report, 90-day warranty, and GST invoice." }
 ];
