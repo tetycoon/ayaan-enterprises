@@ -1339,7 +1339,7 @@ body.has-cart .footer-bottom { padding-bottom: 150px; }
 
 /* Header top strip: WhatsApp + call (no email) */
 .topbar-in { align-items: center; }
-.topbar-links { display: flex; align-items: center; gap: 10px; }
+.topbar-links { display: flex; align-items: center; gap: 20px; }
 .topbar-links a { display: inline-flex; align-items: center; gap: 6px; margin-left: 0; font-weight: 700; text-decoration: none !important; }
 .topbar-links svg { width: 15px; height: 15px; flex: none; }
 .topbar-links .topbar-wa { background: var(--wa); color: #fff; padding: 4px 12px; border-radius: 999px; }
