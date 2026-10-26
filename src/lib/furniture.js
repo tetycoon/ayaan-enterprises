@@ -35,9 +35,9 @@ const BOSS_TABLE_PHOTOS = [
   }
 ];
 const MANAGER_TABLE_HERO = {
-  src: `${F}/manager-table-teak-black-slatted-panel.jpg`,
-  alt: "Teak-finish manager desk with a black slatted modesty panel, black metal frame and a black leather chair",
-  contain: true // whole desk shown, no cropping
+  src: `${F}/manager-table-white-desk-office.jpg`,
+  alt: "Manager working on a tablet at a white L-shaped desk with white legs and a grey mesh chair in a bright office",
+  position: "50% 55%" // same 16:10 frame as Office Workstations; keep the person and desk top in view
 };
 const MANAGER_TABLE_PHOTOS = [
   {

@@ -1115,7 +1115,6 @@ html {
 .img-slot.contain > img { object-fit: contain; padding: 14px; }
 .img-slot.contain.fill > img { object-fit: cover; padding: 0; }
 .page-hero .img-slot.ratio-16x9.contain > img { padding: 0; }
-
 /* blend photo edges into the backdrop so no rectangle is visible */
 .hero-slide img {
   filter: none;
