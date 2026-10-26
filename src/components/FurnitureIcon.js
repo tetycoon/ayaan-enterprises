@@ -8,6 +8,14 @@ const PATHS = {
       <path d="M30 22h6M30 27h6" />
     </>
   ),
+  "manager-tables": (
+    <>
+      <path d="M5 18h38" />
+      <path d="M8 18v19M40 18v19" />
+      <rect x="28" y="18" width="12" height="11" rx="1.5" />
+      <path d="M31 24h6" />
+    </>
+  ),
   ergonomics: (
     <>
       <rect x="17" y="5" width="14" height="6" rx="3" />

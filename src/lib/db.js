@@ -179,7 +179,7 @@ export async function initDb(force = false) {
         }
       }
 
-      // Remove the legacy plaintext admin PIN (admin auth now lives in src/lib/auth.js)
+      // Remove the legacy plaintext admin PIN
       await sql.query("DELETE FROM settings WHERE key = $1", ["pin"]);
 
       // Seed default business settings in Postgres if not present
@@ -269,7 +269,7 @@ export async function initDb(force = false) {
       );
     `);
 
-    // Remove the legacy plaintext admin PIN (admin auth now lives in src/lib/auth.js)
+    // Remove the legacy plaintext admin PIN
     db.prepare("DELETE FROM settings WHERE key = ?").run("pin");
 
     // Seed default business settings in SQLite if not present

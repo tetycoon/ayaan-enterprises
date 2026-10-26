@@ -1,6 +1,6 @@
 # Chair Servicing & Refurbishment Portal (Next.js)
 
-A complete corporate chair repair, deep cleaning, refurbishment, and sales platform paired with an internal staff ERP service desk. Built with modern **Next.js (App Router)**, **React 19**, and **Tailwind CSS**.
+A complete corporate chair repair, deep cleaning, refurbishment, and sales platform. Built with modern **Next.js (App Router)**, **React 19**, and **Tailwind CSS**.
 
 ---
 
@@ -33,7 +33,6 @@ npm run start
 | `/shop` | Interactive chair catalogue with category filtering and enquiry cart |
 | `/our-work` | Interactive Before & After comparison sliders |
 | `/quote` | Multi-step quote request form with photo upload and WhatsApp integration |
-| `/admin` | Staff ERP Service Desk (PIN: `1234`) managing enquiries, quotes, and jobs |
 
 ---
 
@@ -49,5 +48,4 @@ npm run start
   * `CallbackModal.js`: Fast callback request modal integrated with the store.
 * **`src/lib/config.js`**: Centralized business profile (company name, phone numbers, WhatsApp, addresses, service regions).
 * **`src/lib/store.js`**: Client-side data layer with canvas photo compression and auto-sequenced IDs.
-* **`src/styles/`**: Custom stylesheets (`style.css` and `admin.css`) paired with Tailwind CSS v4.
-* **`legacy/`**: Original vanilla static files preserved for reference.
+* **`src/styles/`**: Custom stylesheets (`style.css`) paired with Tailwind CSS v4.

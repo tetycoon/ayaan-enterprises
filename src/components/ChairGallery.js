@@ -34,20 +34,17 @@ export default function ChairGallery({ chairs, groups, groupKey = "group" }) {
 
       <div className="pf-grid">
         {visible.map((chair) => {
-          const [main, alt] = chair.images;
+          const [main] = chair.images;
           const photoLabel = chair.images.length > 1 ? `${chair.images.length} photos` : "1 photo";
           return (
             <article key={chair.id} className="pf-card">
               <button
                 type="button"
-                className={`pf-media ${chair.cover ? "cover" : ""} ${alt ? "has-alt" : ""}`}
+                className={`pf-media ${chair.cover ? "cover" : ""}`}
                 onClick={() => setActive({ chair, index: 0 })}
                 aria-label={`View photos of ${chair.name}`}
               >
                 <Photo className="pf-img" src={main.src} alt={main.alt} sizes={SIZES.chairCard} />
-                {alt && (
-                  <Photo className="pf-img pf-img-alt" src={alt.src} alt="" aria-hidden="true" sizes={SIZES.chairCard} />
-                )}
                 <span className="pf-badge">{chair.badge || photoLabel}</span>
               </button>
               <div className="pf-body">

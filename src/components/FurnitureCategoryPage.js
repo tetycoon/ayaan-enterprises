@@ -45,7 +45,7 @@ export default function FurnitureCategoryPage({ slug }) {
             </div>
           </div>
           {c.hero && (
-            <figure className={`img-slot ratio-16x10 ${c.hero.contain ? "contain" : ""}`}>
+            <figure className={`img-slot ratio-${c.hero.ratio || "16x10"} ${c.hero.contain ? "contain" : ""} ${c.hero.fill ? "fill" : ""}`}>
               <Photo
                 src={c.hero.src}
                 alt={c.hero.alt}

@@ -12,10 +12,9 @@ import LogoPreloader from "./LogoPreloader";
 export default function ClientWrapper({ children }) {
   const [callbackOpen, setCallbackOpen] = useState(false);
   const pathname = usePathname();
-  const isAdmin = pathname.startsWith("/admin");
 
   useEffect(() => {
-    if (typeof window === "undefined" || isAdmin) return;
+    if (typeof window === "undefined") return;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
@@ -113,11 +112,7 @@ export default function ClientWrapper({ children }) {
       if (observer) observer.disconnect();
       animations.forEach((anim) => anim.cancel());
     };
-  }, [pathname, isAdmin]);
-
-  if (isAdmin) {
-    return <>{children}</>;
-  }
+  }, [pathname]);
 
   return (
     <>

@@ -1,36 +1,14 @@
 import { NextResponse } from "next/server";
-import { requireAdmin, isAdmin } from "@/lib/auth";
-import { queryAll, executeSql, getNextSqlId } from "@/lib/db";
-
-export async function GET() {
-  const denied = await requireAdmin();
-  if (denied) return denied;
-  try {
-    const rows = await queryAll("SELECT * FROM enquiries ORDER BY created_at DESC");
-    const parsed = rows.map((r) => ({
-      ...r,
-      problems: r.problems ? JSON.parse(r.problems) : [],
-      chairTypes: r.chair_types ? JSON.parse(r.chair_types) : [],
-      notes: r.notes ? JSON.parse(r.notes) : [],
-      photos: r.photos ? JSON.parse(r.photos) : []
-    }));
-    return NextResponse.json({ success: true, enquiries: parsed });
-  } catch (err) {
-    console.error("GET /api/enquiries error:", err);
-    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
-  }
-}
+import { executeSql, getNextSqlId } from "@/lib/db";
 
 export async function POST(req) {
   try {
     const body = await req.json();
-    // Website forms post here without signing in; only an admin may choose the id, status or notes.
-    if (!(await isAdmin())) {
-      delete body.id;
-      delete body.status;
-      delete body.notes;
-    }
-    const id = body.id || (await getNextSqlId("ENQ"));
+    // Website forms post here without signing in, so the server picks the id, status and notes.
+    delete body.id;
+    delete body.status;
+    delete body.notes;
+    const id = await getNextSqlId("ENQ");
 
     await executeSql(
       `INSERT INTO enquiries (
@@ -59,50 +37,6 @@ export async function POST(req) {
     return NextResponse.json({ success: true, id });
   } catch (err) {
     console.error("POST /api/enquiries error:", err);
-    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
-  }
-}
-
-export async function PATCH(req) {
-  const denied = await requireAdmin();
-  if (denied) return denied;
-  try {
-    const { id, status, notes } = await req.json();
-    if (!id) {
-      return NextResponse.json({ success: false, error: "Missing enquiry id" }, { status: 400 });
-    }
-
-    if (status && notes) {
-      await executeSql(
-        "UPDATE enquiries SET status = ?, notes = ? WHERE id = ?",
-        [status, JSON.stringify(notes), id]
-      );
-    } else if (status) {
-      await executeSql("UPDATE enquiries SET status = ? WHERE id = ?", [status, id]);
-    } else if (notes) {
-      await executeSql("UPDATE enquiries SET notes = ? WHERE id = ?", [JSON.stringify(notes), id]);
-    }
-
-    return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error("PATCH /api/enquiries error:", err);
-    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
-  }
-}
-
-export async function DELETE(req) {
-  const denied = await requireAdmin();
-  if (denied) return denied;
-  try {
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get("id");
-    if (!id) {
-      return NextResponse.json({ success: false, error: "Missing id" }, { status: 400 });
-    }
-    await executeSql("DELETE FROM enquiries WHERE id = ?", [id]);
-    return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error("DELETE /api/enquiries error:", err);
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
 }

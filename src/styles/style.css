@@ -1113,6 +1113,8 @@ html {
 /* product shots on white: show the whole chair */
 .img-slot.contain { background: #fff; }
 .img-slot.contain > img { object-fit: contain; padding: 14px; }
+.img-slot.contain.fill > img { object-fit: cover; padding: 0; }
+.page-hero .img-slot.ratio-16x9.contain > img { padding: 0; }
 
 /* blend photo edges into the backdrop so no rectangle is visible */
 .hero-slide img {
@@ -2239,14 +2241,8 @@ html { -webkit-overflow-scrolling: touch; }
 .pf-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .pf-media { position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0; border: 0; background: #fff; cursor: zoom-in; overflow: hidden; }
 .pf-media:focus-visible { outline: 3px solid var(--teal); outline-offset: -3px; }
-.pf-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 16px; transition: opacity .35s ease, transform .5s ease; }
+.pf-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 16px; }
 .pf-media.cover .pf-img { object-fit: cover; padding: 0; }
-.pf-img-alt { opacity: 0; }
-@media (hover: hover) {
-  .pf-media.has-alt:hover .pf-img { opacity: 0; }
-  .pf-media.has-alt:hover .pf-img-alt { opacity: 1; }
-  .pf-media:not(.has-alt):hover .pf-img { transform: scale(1.04); }
-}
 .pf-badge { position: absolute; left: 12px; bottom: 12px; font-size: .72rem; font-weight: 800; letter-spacing: .02em; background: rgba(9, 24, 43, .78); color: #fff; padding: 4px 10px; border-radius: 999px; }
 .pf-body { display: flex; flex-direction: column; flex: 1; padding: 16px 18px 18px; border-top: 1px solid var(--line); }
 .pf-body h3 { flex: 1; margin: 0 0 14px; font-size: 1rem; line-height: 1.35; }
@@ -2396,6 +2392,8 @@ html { -webkit-overflow-scrolling: touch; }
 @media (max-width: 560px) { .fc-photo-grid.portrait { grid-template-columns: repeat(2, minmax(0, 1fr)); } .fc-photo-grid.portrait .fc-photo:first-child { grid-column: span 2; aspect-ratio: 4 / 3; } }
 .fc-photo.contain { background: #fff; border: 1px solid var(--line); }
 .fc-photo.contain img { object-fit: contain; padding: 16px; }
+/* centre a lone last photo in the three-column gallery */
+@media (min-width: 861px) { .fc-photo-grid:not(.portrait) > .fc-photo:last-child:nth-child(3n+1) { grid-column: 2; } }
 
 /* ---------- Google reviews (home page) ---------- */
 .review-summary { display: flex; align-items: center; justify-content: center; gap: 14px; width: fit-content; max-width: 100%; margin: 0 auto 36px; padding: 14px 22px; background: #fff; border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 4px 20px -2px rgba(9, 24, 43, 0.05); }

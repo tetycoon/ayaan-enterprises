@@ -14,18 +14,47 @@ const ARMCHAIR_PHOTO = {
   src: `${F}/lounge-armchair-tan.jpg`,
   alt: "Tan upholstered lounge armchair with slim dark wooden legs"
 };
+const BOSS_TABLE_HERO = {
+  src: `${F}/boss-table-brown-l-desk-black-chair-hd.png`,
+  alt: "Brown wood-finish L-shaped executive desk with a dark grey panel base and a black high-back leather chair",
+  contain: true, // cut-out product shot on white
+  fill: true // fill the frame edge to edge; only the white margins around the desk are trimmed
+};
 const BOSS_TABLE_PHOTOS = [
   {
-    src: `${F}/boss-table-l-shape-white-frame.jpg`,
-    alt: "L-shaped office table with a light oak top, white steel loop legs and black mesh high-back chair"
+    src: `${F}/boss-table-wood-l-desk-grey-panel.jpg`,
+    alt: "L-shaped office table with a wood-finish top, slanted wood side panel and grey pedestal"
   },
   {
-    src: `${F}/boss-table-teak-black-panel.jpg`,
-    alt: "Executive office table with a teak-finish top, black slotted modesty panel and black leather chair"
+    src: `${F}/boss-table-white-executive-desk-grey-panel.jpg`,
+    alt: "White glossy executive desk with dark grey side panels and a wrapped high-back chair in an office"
   },
   {
-    src: `${F}/boss-table-walnut-open-pedestal.jpg`,
-    alt: "L-shaped office table with a walnut-finish top, dark grey open shelf pedestal and grey mesh chair"
+    src: `${F}/boss-table-white-top-l-desk-brown-cabinet.jpg`,
+    alt: "L-shaped office table with a white top, dark brown body and a matching wooden cabinet along the wall"
+  }
+];
+const MANAGER_TABLE_HERO = {
+  src: `${F}/manager-table-teak-black-slatted-panel.jpg`,
+  alt: "Teak-finish manager desk with a black slatted modesty panel, black metal frame and a black leather chair",
+  contain: true // whole desk shown, no cropping
+};
+const MANAGER_TABLE_PHOTOS = [
+  {
+    src: `${F}/manager-table-walnut-shelf-pedestal.jpg`,
+    alt: "Walnut-finish L-shaped manager desk with an open shelf pedestal and a grey mesh chair"
+  },
+  {
+    src: `${F}/manager-table-walnut-white-mobile-pedestal.jpg`,
+    alt: "Walnut-finish manager desk with a white mobile pedestal drawer unit on castors"
+  },
+  {
+    src: `${F}/manager-table-oak-tapered-legs-return.jpg`,
+    alt: "Light oak L-shaped manager desk with tapered black metal legs and a matching return"
+  },
+  {
+    src: `${F}/manager-table-oak-white-frame-l-desk.jpg`,
+    alt: "Oak-finish L-shaped manager desk with a white loop frame and a black mesh high-back chair"
   }
 ];
 const CONFERENCE_TABLE_PHOTOS = [
@@ -62,7 +91,8 @@ const CABINET_PHOTOS = [
 ];
 
 // ---------- Chair models (client's own product photos) ----------
-// `back` groups chairs on the Ergonomics page; `seating` groups them on the Office Seating page.
+// `back` groups chairs on the Ergonomics page (back height, plus pantry and lobby chairs);
+// `seating` groups them on the Office Seating page.
 export const CHAIRS = [
   {
     id: "ergo-multizone-black",
@@ -87,10 +117,9 @@ export const CHAIRS = [
     seating: "ergonomic",
     name: "High-Back Mesh Chair · Grey with Flip-Up Arms",
     badge: "Showroom photos",
-    cover: true,
     images: [
+      { src: `${P}/highback-dark-brown-leather-chrome.jpg`, alt: "Dark brown leatherette high-back office chair with padded chrome arms and chrome base" },
       { src: `${P}/flip-arm-highback-grey-showroom-1.jpg`, alt: "Grey high-back mesh chair with headrest and flip-up armrests, angled view in the showroom" },
-      { src: `${P}/flip-arm-highback-grey-showroom-2.jpg`, alt: "Grey high-back mesh chair with headrest and flip-up armrests, front view in the showroom" },
       { src: `${P}/flip-arm-highback-grey-showroom-3.jpg`, alt: "Grey high-back mesh chair, side and rear view showing the headrest bracket and recline knob" }
     ]
   },
@@ -230,12 +259,36 @@ export const CHAIRS = [
     name: "Auditorium Seating · Red Upholstered Rows",
     cover: true,
     images: [{ src: "/images/chairs-auditorium.jpg", alt: "Rows of red upholstered auditorium seats" }]
+  },
+  {
+    id: "pantry-shell-wooden-legs",
+    back: "pantry",
+    name: "Pantry Chair · Moulded Shell with Wooden Legs",
+    images: [
+      {
+        src: `${P}/pantry-chair-shell-wooden-legs-colours.jpg`,
+        alt: "Four moulded shell pantry chairs with padded seats and wooden legs in black, red, blue and orange"
+      }
+    ]
+  },
+  {
+    id: "lobby-slatted-shell-armchair",
+    back: "lobby",
+    name: "Lobby Chair · Slatted-Back Shell Armchair",
+    images: [
+      {
+        src: `${P}/lobby-chair-slatted-shell-armchair-colours.jpg`,
+        alt: "Slatted-back shell armchairs with padded seats and black metal legs in black, white, green, yellow, navy and purple"
+      }
+    ]
   }
 ];
 
 export const ERGONOMIC_GROUPS = [
   { id: "high-back", label: "High-Back" },
-  { id: "mid-back", label: "Mid-Back" }
+  { id: "mid-back", label: "Mid-Back" },
+  { id: "pantry", label: "Pantry Chairs" },
+  { id: "lobby", label: "Lobby Chairs" }
 ];
 
 export const SEATING_GROUPS = [
@@ -260,7 +313,7 @@ export const OFFICE_FURNITURE = [
     h1: "Executive Office Tables for Professional Workspaces",
     intro:
       "Create a professional workspace with executive office tables designed for everyday work, meetings, and management offices. Explore office table styles that suit different workspace layouts and business needs. Contact AYAAN ENTERPRISES to discuss your requirements and find a suitable table for your office.",
-    hero: { ...BOSS_TABLE_PHOTOS[1], position: "50% 60%" },
+    hero: { ...BOSS_TABLE_HERO },
     gallery: {
       type: "photos",
       heading: "Boss table styles",
@@ -274,7 +327,33 @@ export const OFFICE_FURNITURE = [
       "Whether you would like matching storage or side units",
       "How many tables you need and your timeline"
     ],
-    related: ["conference-tables", "office-cabinets", "office-workstations"]
+    related: ["manager-tables", "conference-tables", "office-cabinets", "office-workstations"]
+  },
+  {
+    slug: "manager-tables",
+    label: "Manager Tables",
+    blurb: "Manager and team leader desks for supervisor cabins and offices.",
+    title: "Manager Tables & Desks for Supervisor Cabins in Chennai | Ayaan Enterprises",
+    description:
+      "Manager tables and desks for team leaders, supervisors and department heads. Share your room size and requirements with Ayaan Enterprises, Chennai.",
+    h1: "Manager Tables for Team Leaders and Supervisors",
+    intro:
+      "Give your managers a practical desk for daily work, planning and team discussions. Explore manager table styles in wood, white and oak finishes, with L-shaped layouts and storage options for supervisor cabins and department offices. Contact AYAAN ENTERPRISES to discuss the table that suits your team and space.",
+    hero: { ...MANAGER_TABLE_HERO },
+    gallery: {
+      type: "photos",
+      heading: "Manager table styles",
+      note: "A few of the manager table styles we can supply. Ask us for photos of more options.",
+      photos: MANAGER_TABLE_PHOTOS,
+      catalogue: true // keep the WhatsApp photo-request card below the gallery
+    },
+    tips: [
+      "The size of the cabin or desk area where the table will be placed",
+      "Whether the manager needs a side return or a storage pedestal",
+      "Your preferred finish, such as wood, white or oak",
+      "How many tables you need and your timeline"
+    ],
+    related: ["boss-tables", "office-cabinets", "office-workstations"]
   },
   {
     slug: "ergonomics",
@@ -287,8 +366,8 @@ export const OFFICE_FURNITURE = [
     intro:
       "Build a more comfortable and practical workspace with ergonomic office furniture. Explore seating and workstation options designed to support comfortable working positions and everyday office use. Contact AYAAN ENTERPRISES to discuss the furniture options suitable for your workplace.",
     hero: {
-      src: `${F}/ergonomic-black-mesh-headrest.webp`,
-      alt: "Black ergonomic mesh office chair with headrest, contoured lumbar back and adjustable arms",
+      src: `${F}/ergonomic-cream-tan-leather-highback.jpg`,
+      alt: "Cream leatherette high-back office chair with tan side panels, padded chrome arms and chrome base",
       contain: true // cut-out product shot: show the whole chair on white
     },
     gallery: {

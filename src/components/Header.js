@@ -172,13 +172,10 @@ export default function Header() {
               WhatsApp {SITE.whatsappDisplay}
             </a>
             <span className="topbar-nums">
-              <a href={`tel:${SITE.phoneLink}`}>Call: {SITE.phone}</a>
+              <a href={`tel:${SITE.phone2Link}`}>Call: {SITE.phone2}</a>
               <span aria-hidden="true">/</span>
-              <a href={`tel:${SITE.phone2Link}`}>{SITE.phone2}</a>
+              <a href={`tel:${SITE.phoneLink}`}>{SITE.phone}</a>
             </span>
-            <Link href="/admin" className="text-xs text-slate-400 hover:text-white ml-2">
-              Staff Login &rarr;
-            </Link>
           </span>
         </div>
       </div>
